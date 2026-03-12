@@ -104,16 +104,27 @@ export function detectLocale(request) {
 }
 
 /**
- * 在 HTML 中注入 i18n 支援
+ * 在 HTML 中注入 i18n 支援並替換佔位符
  */
 export function injectI18n(html, locale = 'zh-CN') {
+  const t = translations[locale] || translations['zh-CN'];
+  
   // 注入語言資料
   const dataScript = getI18nDataScript();
   html = html.replace('</head>', `${dataScript}</head>`);
   
   // 設定 lang 屬性
-  html = html.replace('<html', `<html lang="${locale}"`);
-  html = html.replace('<html lang="zh-CN"', `<html lang="${locale}"`);
+  html = html.replace(/<html>/g, `<html lang="${locale}">`);
+  html = html.replace(/<html lang="zh-CN">/g, `<html lang="${locale}">`);
+  
+  // 佔位符替換：{{section.key}} → 對應翻譯
+  html = html.replace(/\{\{([a-zA-Z_]+)\.([a-zA-Z_]+)\}\}/g, (match, section, key) => {
+    if (t[section] && t[section][key]) {
+      return t[section][key];
+    }
+    console.warn(`Missing translation: ${section}.${key}`);
+    return match; // 找不到就保留原樣
+  });
   
   return html;
 }
