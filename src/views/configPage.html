@@ -79,21 +79,21 @@
           
         <div class="hidden md:flex items-center space-x-4 ml-auto">
           <a href="/admin/dashboard" class="text-gray-700 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300 px-3 py-2 rounded-md text-sm font-medium transition">
-            <i class="fas fa-chart-line mr-1"></i>仪表盘
+            <i class="fas fa-chart-line mr-1"></i>{{nav.dashboard}}
           </a>
           <a href="/admin" class="text-gray-700 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300 px-3 py-2 rounded-md text-sm font-medium transition">
-            <i class="fas fa-list mr-1"></i>订阅列表
+            <i class="fas fa-list mr-1"></i>{{nav.subscriptionList}}
           </a>
           <a href="/admin/config" class="text-indigo-600 border-b-2 border-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition">
-            <i class="fas fa-cog mr-1"></i>系统配置
+            <i class="fas fa-cog mr-1"></i>{{nav.systemConfig}}
           </a>
           <a href="/api/logout" class="text-gray-700 hover:text-red-600 border-b-2 border-transparent hover:border-red-300 px-3 py-2 rounded-md text-sm font-medium transition">
-            <i class="fas fa-sign-out-alt mr-1"></i>退出登录
+            <i class="fas fa-sign-out-alt mr-1"></i>{{nav.logout}}
           </a>
         </div>
 
         <div class="flex items-center md:hidden ml-auto">
-          <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-label="切换导航菜单" class="text-gray-600 hover:text-indigo-600 focus:outline-none p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-colors">
+          <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-label="{{nav.toggleMenu}}" class="text-gray-600 hover:text-indigo-600 focus:outline-none p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-colors">
             <i class="fas fa-bars text-xl"></i>
           </button>
         </div>
@@ -104,16 +104,16 @@
       <div class="px-4 pt-2 pb-4 space-y-2">
         <div id="mobileTimeDisplay" class="px-3 py-2 text-xs text-indigo-600 text-right border-b border-gray-100 mb-2"></div>
         <a href="/admin/dashboard" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 active:bg-indigo-100 transition-colors">
-          <i class="fas fa-chart-line w-6 text-center mr-2"></i>仪表盘
+          <i class="fas fa-chart-line w-6 text-center mr-2"></i>{{nav.dashboard}}
         </a>
         <a href="/admin" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 active:bg-indigo-100 transition-colors">
-          <i class="fas fa-list w-6 text-center mr-2"></i>订阅列表
+          <i class="fas fa-list w-6 text-center mr-2"></i>{{nav.subscriptionList}}
         </a>
         <a href="/admin/config" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 active:bg-indigo-100 transition-colors">
-          <i class="fas fa-cog w-6 text-center mr-2"></i>系统配置
+          <i class="fas fa-cog w-6 text-center mr-2"></i>{{nav.systemConfig}}
         </a>
         <a href="/api/logout" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-red-50 hover:text-red-600 active:bg-red-100 transition-colors">
-          <i class="fas fa-sign-out-alt w-6 text-center mr-2"></i>退出登录
+          <i class="fas fa-sign-out-alt w-6 text-center mr-2"></i>{{nav.logout}}
         </a>
       </div>
     </div>
@@ -125,78 +125,78 @@
       
       <form id="configForm" class="space-y-8">
         <div class="border-b border-gray-200 pb-6">
-          <h3 class="text-lg font-medium text-gray-900 mb-4">管理员账户</h3>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">{{config.text_5_1942}}</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label for="adminUsername" class="block text-sm font-medium text-gray-700">用户名</label>
+              <label for="adminUsername" class="block text-sm font-medium text-gray-700">{{login.username}}</label>
               <input type="text" id="adminUsername" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
             <div>
-              <label for="adminPassword" class="block text-sm font-medium text-gray-700">密码</label>
-              <input type="password" id="adminPassword" placeholder="如不修改密码，请留空" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              <p class="mt-1 text-sm text-gray-500">留空表示不修改当前密码</p>
+              <label for="adminPassword" class="block text-sm font-medium text-gray-700">{{login.password}}</label>
+              <input type="password" id="adminPassword" placeholder="{{misc.longText_10835}}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <p class="mt-1 text-sm text-gray-500">{{misc.longText_36008}}</p>
             </div>
           </div>
         </div>
         
         <div class="border-b border-gray-200 pb-6">
-          <h3 class="text-lg font-medium text-gray-900 mb-4">显示设置</h3>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">{{config.text_4_498}}</h3>
           
           <div class="mb-6">
-            <label for="languageSelect" class="block text-sm font-medium text-gray-700 mb-1">语言 / Language</label>
+            <label for="languageSelect" class="block text-sm font-medium text-gray-700 mb-1">{{misc.longText_85868}}</label>
             <select id="languageSelect" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-white sm:text-sm">
-              <option value="zh-CN">🇨🇳 简体中文</option>
-              <option value="zh-TW">🇹🇼 繁體中文</option>
+              <option value="zh-CN">{{misc.longText_52397}}</option>
+              <option value="zh-TW">{{misc.longText_49385}}</option>
               <option value="en">🇬🇧 English</option>
             </select>
-            <p class="mt-1 text-sm text-gray-500">选择系统显示语言（Select system display language）</p>
+            <p class="mt-1 text-sm text-gray-500">{{misc.longText_21886}}</p>
           </div>
           
           <div class="mb-6">
-            <label for="themeModeSelect" class="block text-sm font-medium text-gray-700 mb-1">主题模式</label>
+            <label for="themeModeSelect" class="block text-sm font-medium text-gray-700 mb-1">{{misc.text_4_8991}}</label>
             <select id="themeModeSelect" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-white sm:text-sm">
-              <option value="light">🌞 浅色模式</option>
-              <option value="dark">🌙 暗黑模式</option>
-              <option value="system">🖥️ 跟随系统</option>
+              <option value="light">{{misc.text_6_5265}}</option>
+              <option value="dark">{{misc.text_6_5999}}</option>
+              <option value="system">{{misc.longText_44602}}</option>
             </select>
-            <p class="mt-1 text-sm text-gray-500">选择系统的外观风格</p>
+            <p class="mt-1 text-sm text-gray-500">{{misc.longText_59493}}</p>
           </div>
           
           <div class="mb-6">
             <label class="inline-flex items-center">
               <input type="checkbox" id="showLunarGlobal" class="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" checked>
-              <span class="ml-2 text-sm text-gray-700">在通知中显示农历日期</span>
+              <span class="ml-2 text-sm text-gray-700">{{config.longText_73431}}</span>
             </label>
-            <p class="mt-1 text-sm text-gray-500">控制是否在通知消息中包含农历日期信息</p>
+            <p class="mt-1 text-sm text-gray-500">{{config.longText_58268}}</p>
           </div>
         </div>
 
 
         <div class="border-b border-gray-200 pb-6">
-          <h3 class="text-lg font-medium text-gray-900 mb-4">时区设置</h3>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">{{config.text_4_8435}}</h3>
           <div class="mb-6">
-          <label for="timezone" class="block text-sm font-medium text-gray-700 mb-1">时区选择</label>
+          <label for="timezone" class="block text-sm font-medium text-gray-700 mb-1">{{misc.text_4_1101}}</label>
           <select id="timezone" name="timezone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-white">
-            <option value="UTC">世界标准时间（UTC+0）</option>
-            <option value="Asia/Shanghai">中国标准时间（UTC+8）</option>
-            <option value="Asia/Hong_Kong">香港时间（UTC+8）</option>
-            <option value="Asia/Taipei">台北时间（UTC+8）</option>
-            <option value="Asia/Singapore">新加坡时间（UTC+8）</option>
-            <option value="Asia/Tokyo">日本时间（UTC+9）</option>
-            <option value="Asia/Seoul">韩国时间（UTC+9）</option>
-            <option value="America/New_York">美国东部时间（UTC-5）</option>
-            <option value="America/Chicago">美国中部时间（UTC-6）</option>
-            <option value="America/Denver">美国山地时间（UTC-7）</option>
-            <option value="America/Los_Angeles">美国太平洋时间（UTC-8）</option>
-            <option value="Europe/London">英国时间（UTC+0）</option>
-            <option value="Europe/Paris">巴黎时间（UTC+1）</option>
-            <option value="Europe/Berlin">柏林时间（UTC+1）</option>
-            <option value="Europe/Moscow">莫斯科时间（UTC+3）</option>
-            <option value="Australia/Sydney">悉尼时间（UTC+10）</option>
-            <option value="Australia/Melbourne">墨尔本时间（UTC+10）</option>
-            <option value="Pacific/Auckland">奥克兰时间（UTC+12）</option>
+            <option value="UTC">{{misc.longText_35602}}</option>
+            <option value="Asia/Shanghai">{{misc.longText_30252}}</option>
+            <option value="Asia/Hong_Kong">{{misc.longText_64473}}</option>
+            <option value="Asia/Taipei">{{misc.longText_27926}}</option>
+            <option value="Asia/Singapore">{{misc.longText_84699}}</option>
+            <option value="Asia/Tokyo">{{misc.longText_60605}}</option>
+            <option value="Asia/Seoul">{{misc.longText_68442}}</option>
+            <option value="America/New_York">{{misc.longText_61966}}</option>
+            <option value="America/Chicago">{{misc.longText_84132}}</option>
+            <option value="America/Denver">{{misc.longText_29245}}</option>
+            <option value="America/Los_Angeles">{{misc.longText_58324}}</option>
+            <option value="Europe/London">{{misc.longText_17877}}</option>
+            <option value="Europe/Paris">{{misc.longText_10264}}</option>
+            <option value="Europe/Berlin">{{misc.longText_51918}}</option>
+            <option value="Europe/Moscow">{{misc.longText_39230}}</option>
+            <option value="Australia/Sydney">{{misc.longText_98208}}</option>
+            <option value="Australia/Melbourne">{{misc.longText_73769}}</option>
+            <option value="Pacific/Auckland">{{misc.longText_24898}}</option>
           </select>
-            <p class="mt-1 text-sm text-gray-500">该项仅用于兼容旧配置与展示参考；后端调度与提醒计算统一使用 UTC，页面时间始终按当前设备时区显示。</p>
+            <p class="mt-1 text-sm text-gray-500">{{config.longText_33814}}</p>
           </div>
         </div>
 
@@ -205,19 +205,19 @@
           <h3 class="text-lg font-medium text-gray-900 mb-4">{{config.notifications}}</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div>
-              <label for="notificationHours" class="block text-sm font-medium text-gray-700">通知时段（UTC）</label>
-              <input type="text" id="notificationHours" placeholder="例如：08, 12, 20 或输入 * 表示全天"
+              <label for="notificationHours" class="block text-sm font-medium text-gray-700">{{config.longText_6263}}</label>
+              <input type="text" id="notificationHours" placeholder="{{misc.longText_18024}}"
                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              <p class="mt-1 text-sm text-gray-500">可输入多个小时，使用逗号或空格分隔；留空则默认每天执行一次任务即可</p>
+              <p class="mt-1 text-sm text-gray-500">{{cron.longText_50931}}</p>
             </div>
             <div class="bg-indigo-50 border border-indigo-100 rounded-md p-3 text-sm text-indigo-700">
-              <p class="font-medium mb-1">提示</p>
+              <p class="font-medium mb-1">{{misc.text_2_2817}}</p>
               <p>后台统一按 UTC 判断通知时段。示例：北京时间 08:00 对应 UTC 00，请在此填 <code>00</code>。</p>
-              <p class="mt-1">若 Cron 已设置为每小时执行，可用该字段限制实际发送提醒的小时段。</p>
+              <p class="mt-1">{{config.longText_52333}}</p>
             </div>
           </div>
           <div class="mb-6">
-            <label class="block text-sm font-medium text-gray-700 mb-3">通知方式（可多选）</label>
+            <label class="block text-sm font-medium text-gray-700 mb-3">{{config.longText_57925}}</label>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <label class="inline-flex items-center">
                 <input type="checkbox" name="enabledNotifiers" value="telegram" class="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
@@ -229,15 +229,15 @@
               </label>
               <label class="inline-flex items-center">
                 <input type="checkbox" name="enabledNotifiers" value="webhook" class="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                <span class="ml-2 text-sm text-gray-700">Webhook 通知</span>
+                <span class="ml-2 text-sm text-gray-700">{{config.longText_13163}}</span>
               </label>
               <label class="inline-flex items-center">
                 <input type="checkbox" name="enabledNotifiers" value="wechatbot" class="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                <span class="ml-2 text-sm text-gray-700">企业微信机器人</span>
+                <span class="ml-2 text-sm text-gray-700">{{misc.longText_69533}}</span>
               </label>
               <label class="inline-flex items-center">
                 <input type="checkbox" name="enabledNotifiers" value="email" class="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                <span class="ml-2 text-sm text-gray-700">邮件通知</span>
+                <span class="ml-2 text-sm text-gray-700">{{config.email}}</span>
               </label>
               <label class="inline-flex items-center">
                 <input type="checkbox" name="enabledNotifiers" value="bark" class="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
@@ -250,27 +250,27 @@
             </div>
             <div class="mt-2 flex flex-wrap gap-4">
               <a href="https://www.notifyx.cn/" target="_blank" class="text-indigo-600 hover:text-indigo-800 text-sm">
-                <i class="fas fa-external-link-alt ml-1"></i> NotifyX官网
+                <i class="fas fa-external-link-alt ml-1"></i> {{config.notifyxWebsite}}
               </a>
               <a href="https://webhook.site" target="_blank" class="text-indigo-600 hover:text-indigo-800 text-sm">
-                <i class="fas fa-external-link-alt ml-1"></i> Webhook 调试工具
+                <i class="fas fa-external-link-alt ml-1"></i> {{config.webhookDebugTool}}
               </a>
               <a href="https://developer.work.weixin.qq.com/document/path/91770" target="_blank" class="text-indigo-600 hover:text-indigo-800 text-sm">
-                <i class="fas fa-external-link-alt ml-1"></i> 企业微信机器人文档
+                <i class="fas fa-external-link-alt ml-1"></i> {{config.wechatbotDoc}}
               </a>
               <a href="https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/" target="_blank" class="text-indigo-600 hover:text-indigo-800 text-sm">
                 <i class="fas fa-external-link-alt ml-1"></i> 获取 Resend API Key
               </a>
               <a href="https://apps.apple.com/cn/app/bark-customed-notifications/id1403753865" target="_blank" class="text-indigo-600 hover:text-indigo-800 text-sm">
-                <i class="fas fa-external-link-alt ml-1"></i> Bark iOS应用
+                <i class="fas fa-external-link-alt ml-1"></i> {{config.barkIosApp}}
               </a>
             </div>
           </div>
 
           <div class="mb-6">
-            <label for="thirdPartyToken" class="block text-sm font-medium text-gray-700">第三方 API 访问令牌</label>
+            <label for="thirdPartyToken" class="block text-sm font-medium text-gray-700">{{misc.longText_32564}}</label>
             <div class="mt-1 flex flex-col sm:flex-row sm:items-center gap-3">
-              <input type="text" id="thirdPartyToken" placeholder="留空表示不修改；输入新值将更新"
+              <input type="text" id="thirdPartyToken" placeholder="{{misc.longText_86051}}"
                 class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
               <button type="button" id="generateThirdPartyToken" class="btn-info text-white px-4 py-2 rounded-md text-sm font-medium whitespace-nowrap">
                 <i class="fas fa-magic mr-2"></i>生成令牌
@@ -279,42 +279,42 @@
                 <i class="fas fa-eraser mr-2"></i>清空
               </button>
             </div>
-            <p id="THIRD_PARTY_API_TOKENStatus" class="mt-1 text-xs text-gray-500">加载中...</p>
-            <p class="mt-1 text-sm text-gray-500">调用 /api/notify/{token} 接口时需携带此令牌；留空表示禁用第三方 API 推送。</p>
+            <p id="THIRD_PARTY_API_TOKENStatus" class="mt-1 text-xs text-gray-500">{{common.loading}}</p>
+            <p class="mt-1 text-sm text-gray-500">{{misc.longText_70998}}</p>
           </div>
 
           <div class="mb-6">
-            <label class="block text-sm font-medium text-gray-700 mb-3">调试设置</label>
+            <label class="block text-sm font-medium text-gray-700 mb-3">{{config.text_4_7773}}</label>
             <label class="inline-flex items-center cursor-pointer select-none">
               <input type="checkbox" id="debugLogs" class="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-              <span class="ml-2 text-sm text-gray-700">开启调试日志（影响控制台输出）</span>
+              <span class="ml-2 text-sm text-gray-700">{{misc.longText_695}}</span>
             </label>
           </div>
 
           <div class="mb-6">
-            <label for="paymentHistoryLimit" class="block text-sm font-medium text-gray-700">支付历史保留条数</label>
+            <label for="paymentHistoryLimit" class="block text-sm font-medium text-gray-700">{{subscriptions.longText_26637}}</label>
             <input type="number" id="paymentHistoryLimit" min="10" max="1000" step="1"
               class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="默认 100">
-            <p class="mt-1 text-sm text-gray-500">自动续订与手动续订后仅保留最近 N 条支付历史（建议 50~200，默认 100）。</p>
+              placeholder="{{misc.text_6_9937}}">
+            <p class="mt-1 text-sm text-gray-500">{{subscriptions.longText_81529}}</p>
           </div>
           
           <div id="telegramConfig" class="config-section">
-            <h4 class="text-md font-medium text-gray-900 mb-3">Telegram 配置</h4>
+            <h4 class="text-md font-medium text-gray-900 mb-3">{{config.longText_96536}}</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
                 <label for="tgBotToken" class="block text-sm font-medium text-gray-700">Bot Token</label>
                 <div class="mt-1 flex flex-col sm:flex-row sm:items-center gap-3">
-                  <input type="text" id="tgBotToken" placeholder="留空表示不修改；输入新值将更新" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                  <input type="text" id="tgBotToken" placeholder="{{misc.longText_86051}}" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   <button type="button" id="clearTgBotToken" class="btn-warning text-white px-4 py-2 rounded-md text-sm font-medium whitespace-nowrap">
                     <i class="fas fa-eraser mr-2"></i>清空
                   </button>
                 </div>
-                <p id="TG_BOT_TOKENStatus" class="mt-1 text-xs text-gray-500">加载中...</p>
+                <p id="TG_BOT_TOKENStatus" class="mt-1 text-xs text-gray-500">{{common.loading}}</p>
               </div>
               <div>
                 <label for="tgChatId" class="block text-sm font-medium text-gray-700">Chat ID</label>
-                <input type="text" id="tgChatId" placeholder="可从 @userinfobot 获取" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <input type="text" id="tgChatId" placeholder="{{misc.longText_21188}}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
               </div>
             </div>
             <div class="flex justify-end">
@@ -325,17 +325,17 @@
           </div>
           
           <div id="notifyxConfig" class="config-section">
-            <h4 class="text-md font-medium text-gray-900 mb-3">NotifyX 配置</h4>
+            <h4 class="text-md font-medium text-gray-900 mb-3">{{config.longText_25503}}</h4>
             <div class="mb-4">
               <label for="notifyxApiKey" class="block text-sm font-medium text-gray-700">API Key</label>
               <div class="mt-1 flex flex-col sm:flex-row sm:items-center gap-3">
-                <input type="text" id="notifyxApiKey" placeholder="留空表示不修改；输入新值将更新" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <input type="text" id="notifyxApiKey" placeholder="{{misc.longText_86051}}" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 <button type="button" id="clearNotifyxApiKey" class="btn-warning text-white px-4 py-2 rounded-md text-sm font-medium whitespace-nowrap">
                   <i class="fas fa-eraser mr-2"></i>清空
                 </button>
               </div>
-              <p id="NOTIFYX_API_KEYStatus" class="mt-1 text-xs text-gray-500">加载中...</p>
-              <p class="mt-1 text-sm text-gray-500">从 <a href="https://www.notifyx.cn/" target="_blank" class="text-indigo-600 hover:text-indigo-800">NotifyX平台</a> 获取的 API Key</p>
+              <p id="NOTIFYX_API_KEYStatus" class="mt-1 text-xs text-gray-500">{{common.loading}}</p>
+              <p class="mt-1 text-sm text-gray-500">从 <a href="https://www.notifyx.cn/" target="_blank" class="text-indigo-600 hover:text-indigo-800">{{misc.longText_83743}}</a> 获取的 API Key</p>
             </div>
             <div class="flex justify-end">
               <button type="button" id="testNotifyXBtn" class="btn-secondary text-white px-4 py-2 rounded-md text-sm font-medium">
@@ -345,21 +345,21 @@
           </div>
 
           <div id="webhookConfig" class="config-section">
-            <h4 class="text-md font-medium text-gray-900 mb-3">Webhook 通知 配置</h4>
+            <h4 class="text-md font-medium text-gray-900 mb-3">{{config.longText_92152}}</h4>
             <div class="grid grid-cols-1 gap-4 mb-4">
               <div>
-                <label for="webhookUrl" class="block text-sm font-medium text-gray-700">Webhook 通知 URL</label>
+                <label for="webhookUrl" class="block text-sm font-medium text-gray-700">{{config.longText_34575}}</label>
                 <div class="mt-1 flex flex-col sm:flex-row sm:items-center gap-3">
-                  <input type="url" id="webhookUrl" placeholder="留空表示不修改；输入新值将更新" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                  <input type="url" id="webhookUrl" placeholder="{{misc.longText_86051}}" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   <button type="button" id="clearWebhookUrl" class="btn-warning text-white px-4 py-2 rounded-md text-sm font-medium whitespace-nowrap">
                     <i class="fas fa-eraser mr-2"></i>清空
                   </button>
                 </div>
-                <p id="WEBHOOK_URLStatus" class="mt-1 text-xs text-gray-500">加载中...</p>
+                <p id="WEBHOOK_URLStatus" class="mt-1 text-xs text-gray-500">{{common.loading}}</p>
                 <p class="mt-1 text-sm text-gray-500">请填写自建服务或第三方平台提供的 Webhook 地址，例如 <code>https://your-webhook-endpoint.com/path</code></p>
               </div>
               <div>
-                <label for="webhookMethod" class="block text-sm font-medium text-gray-700">请求方法</label>
+                <label for="webhookMethod" class="block text-sm font-medium text-gray-700">{{misc.text_4_9000}}</label>
                 <select id="webhookMethod" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   <option value="POST">POST</option>
                   <option value="GET">GET</option>
@@ -367,20 +367,20 @@
                 </select>
               </div>
               <div>
-                <label for="webhookHeaders" class="block text-sm font-medium text-gray-700">自定义请求头 (JSON格式，可选)</label>
+                <label for="webhookHeaders" class="block text-sm font-medium text-gray-700">{{misc.longText_59310}}</label>
                 <div class="mt-1 flex flex-col sm:flex-row sm:items-start gap-3">
                   <textarea id="webhookHeaders" rows="3" placeholder='留空表示不修改；输入新值将更新' class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                   <button type="button" id="clearWebhookHeaders" class="btn-warning text-white px-4 py-2 rounded-md text-sm font-medium whitespace-nowrap">
                     <i class="fas fa-eraser mr-2"></i>清空
                   </button>
                 </div>
-                <p id="WEBHOOK_HEADERSStatus" class="mt-1 text-xs text-gray-500">加载中...</p>
-                <p class="mt-1 text-sm text-gray-500">JSON格式的自定义请求头，留空使用默认</p>
+                <p id="WEBHOOK_HEADERSStatus" class="mt-1 text-xs text-gray-500">{{common.loading}}</p>
+                <p class="mt-1 text-sm text-gray-500">{{misc.longText_11683}}</p>
               </div>
               <div>
-                <label for="webhookTemplate" class="block text-sm font-medium text-gray-700">消息模板 (JSON格式，可选)</label>
+                <label for="webhookTemplate" class="block text-sm font-medium text-gray-700">{{misc.longText_56692}}</label>
                 <textarea id="webhookTemplate" rows="4" placeholder='{"title": "{{title}}", "content": "{{content}}", "timestamp": "{{timestamp}}"}' class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
-                <p class="mt-1 text-sm text-gray-500">支持变量: {{title}}, {{content}}, {{timestamp}}。留空使用默认格式</p>
+                <p class="mt-1 text-sm text-gray-500">{{misc.longText_65245}}</p>
               </div>
             </div>
             <div class="flex justify-end">
@@ -391,37 +391,37 @@
           </div>
 
           <div id="wechatbotConfig" class="config-section">
-            <h4 class="text-md font-medium text-gray-900 mb-3">企业微信机器人 配置</h4>
+            <h4 class="text-md font-medium text-gray-900 mb-3">{{config.longText_24584}}</h4>
             <div class="grid grid-cols-1 gap-4 mb-4">
               <div>
-                <label for="wechatbotWebhook" class="block text-sm font-medium text-gray-700">机器人 Webhook URL</label>
+                <label for="wechatbotWebhook" class="block text-sm font-medium text-gray-700">{{misc.longText_90436}}</label>
                 <div class="mt-1 flex flex-col sm:flex-row sm:items-center gap-3">
-                  <input type="url" id="wechatbotWebhook" placeholder="留空表示不修改；输入新值将更新" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                  <input type="url" id="wechatbotWebhook" placeholder="{{misc.longText_86051}}" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   <button type="button" id="clearWechatbotWebhook" class="btn-warning text-white px-4 py-2 rounded-md text-sm font-medium whitespace-nowrap">
                     <i class="fas fa-eraser mr-2"></i>清空
                   </button>
                 </div>
-                <p id="WECHATBOT_WEBHOOKStatus" class="mt-1 text-xs text-gray-500">加载中...</p>
-                <p class="mt-1 text-sm text-gray-500">从企业微信群聊中添加机器人获取的 Webhook URL</p>
+                <p id="WECHATBOT_WEBHOOKStatus" class="mt-1 text-xs text-gray-500">{{common.loading}}</p>
+                <p class="mt-1 text-sm text-gray-500">{{misc.longText_89896}}</p>
               </div>
               <div>
-                <label for="wechatbotMsgType" class="block text-sm font-medium text-gray-700">消息类型</label>
+                <label for="wechatbotMsgType" class="block text-sm font-medium text-gray-700">{{misc.text_4_6105}}</label>
                 <select id="wechatbotMsgType" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option value="text">文本消息</option>
-                  <option value="markdown">Markdown消息</option>
+                  <option value="text">{{misc.text_4_6447}}</option>
+                  <option value="markdown">{{misc.longText_7063}}</option>
                 </select>
-                <p class="mt-1 text-sm text-gray-500">选择发送的消息格式类型</p>
+                <p class="mt-1 text-sm text-gray-500">{{cron.longText_53767}}</p>
               </div>
               <div>
-                <label for="wechatbotAtMobiles" class="block text-sm font-medium text-gray-700">@手机号 (可选)</label>
+                <label for="wechatbotAtMobiles" class="block text-sm font-medium text-gray-700">{{misc.longText_12007}}</label>
                 <input type="text" id="wechatbotAtMobiles" placeholder="13800138000,13900139000" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <p class="mt-1 text-sm text-gray-500">需要@的手机号，多个用逗号分隔，留空则不@任何人</p>
+                <p class="mt-1 text-sm text-gray-500">{{misc.longText_41779}}</p>
               </div>
               <div>
-                <label for="wechatbotAtAll" class="block text-sm font-medium text-gray-700 mb-2">@所有人</label>
+                <label for="wechatbotAtAll" class="block text-sm font-medium text-gray-700 mb-2">{{misc.text_4_5520}}</label>
                 <label class="inline-flex items-center">
                   <input type="checkbox" id="wechatbotAtAll" class="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                  <span class="ml-2 text-sm text-gray-700">发送消息时@所有人</span>
+                  <span class="ml-2 text-sm text-gray-700">{{cron.longText_39983}}</span>
                 </label>
               </div>
             </div>
@@ -433,33 +433,33 @@
           </div>
 
           <div id="emailConfig" class="config-section">
-            <h4 class="text-md font-medium text-gray-900 mb-3">邮件通知 配置</h4>
+            <h4 class="text-md font-medium text-gray-900 mb-3">{{config.longText_44429}}</h4>
             <div class="grid grid-cols-1 gap-4 mb-4">
               <div>
                 <label for="resendApiKey" class="block text-sm font-medium text-gray-700">Resend API Key</label>
                 <div class="mt-1 flex flex-col sm:flex-row sm:items-center gap-3">
-                  <input type="text" id="resendApiKey" placeholder="留空表示不修改；输入新值将更新" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                  <input type="text" id="resendApiKey" placeholder="{{misc.longText_86051}}" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   <button type="button" id="clearResendApiKey" class="btn-warning text-white px-4 py-2 rounded-md text-sm font-medium whitespace-nowrap">
                     <i class="fas fa-eraser mr-2"></i>清空
                   </button>
                 </div>
-                <p id="RESEND_API_KEYStatus" class="mt-1 text-xs text-gray-500">加载中...</p>
-                <p class="mt-1 text-sm text-gray-500">从 <a href="https://resend.com/api-keys" target="_blank" class="text-indigo-600 hover:text-indigo-800">Resend控制台</a> 获取的 API Key</p>
+                <p id="RESEND_API_KEYStatus" class="mt-1 text-xs text-gray-500">{{common.loading}}</p>
+                <p class="mt-1 text-sm text-gray-500">从 <a href="https://resend.com/api-keys" target="_blank" class="text-indigo-600 hover:text-indigo-800">{{misc.longText_40979}}</a> 获取的 API Key</p>
               </div>
               <div>
-                <label for="emailFrom" class="block text-sm font-medium text-gray-700">发件人邮箱</label>
+                <label for="emailFrom" class="block text-sm font-medium text-gray-700">{{misc.text_5_6644}}</label>
                 <input type="email" id="emailFrom" placeholder="noreply@yourdomain.com" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <p class="mt-1 text-sm text-gray-500">必须是已在Resend验证的域名邮箱</p>
+                <p class="mt-1 text-sm text-gray-500">{{misc.longText_23943}}</p>
               </div>
               <div>
-                <label for="emailFromName" class="block text-sm font-medium text-gray-700">发件人名称</label>
-                <input type="text" id="emailFromName" placeholder="订阅提醒系统" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <p class="mt-1 text-sm text-gray-500">显示在邮件中的发件人名称</p>
+                <label for="emailFromName" class="block text-sm font-medium text-gray-700">{{misc.text_5_4776}}</label>
+                <input type="text" id="emailFromName" placeholder="{{subscriptions.text_6_8660}}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <p class="mt-1 text-sm text-gray-500">{{misc.longText_97538}}</p>
               </div>
               <div>
-                <label for="emailTo" class="block text-sm font-medium text-gray-700">收件人邮箱</label>
+                <label for="emailTo" class="block text-sm font-medium text-gray-700">{{misc.text_5_7927}}</label>
                 <input type="email" id="emailTo" placeholder="user@example.com" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <p class="mt-1 text-sm text-gray-500">接收通知邮件的邮箱地址</p>
+                <p class="mt-1 text-sm text-gray-500">{{config.longText_45342}}</p>
               </div>
             </div>
             <div class="flex justify-end">
@@ -470,31 +470,31 @@
           </div>
 
           <div id="barkConfig" class="config-section">
-            <h4 class="text-md font-medium text-gray-900 mb-3">Bark 配置</h4>
+            <h4 class="text-md font-medium text-gray-900 mb-3">{{config.longText_41315}}</h4>
             <div class="grid grid-cols-1 gap-4 mb-4">
               <div>
-                <label for="barkServer" class="block text-sm font-medium text-gray-700">服务器地址</label>
+                <label for="barkServer" class="block text-sm font-medium text-gray-700">{{misc.text_5_4327}}</label>
                 <input type="url" id="barkServer" placeholder="https://api.day.app" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <p class="mt-1 text-sm text-gray-500">Bark 服务器地址，默认为官方服务器，也可以使用自建服务器</p>
+                <p class="mt-1 text-sm text-gray-500">{{misc.longText_43030}}</p>
               </div>
               <div>
-                <label for="barkDeviceKey" class="block text-sm font-medium text-gray-700">设备Key</label>
+                <label for="barkDeviceKey" class="block text-sm font-medium text-gray-700">{{misc.text_5_9501}}</label>
                 <div class="mt-1 flex flex-col sm:flex-row sm:items-center gap-3">
-                  <input type="text" id="barkDeviceKey" placeholder="留空表示不修改；输入新值将更新" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                  <input type="text" id="barkDeviceKey" placeholder="{{misc.longText_86051}}" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   <button type="button" id="clearBarkDeviceKey" class="btn-warning text-white px-4 py-2 rounded-md text-sm font-medium whitespace-nowrap">
                     <i class="fas fa-eraser mr-2"></i>清空
                   </button>
                 </div>
-                <p id="BARK_DEVICE_KEYStatus" class="mt-1 text-xs text-gray-500">加载中...</p>
-                <p class="mt-1 text-sm text-gray-500">从 <a href="https://apps.apple.com/cn/app/bark-customed-notifications/id1403753865" target="_blank" class="text-indigo-600 hover:text-indigo-800">Bark iOS 应用</a> 中获取的设备Key</p>
+                <p id="BARK_DEVICE_KEYStatus" class="mt-1 text-xs text-gray-500">{{common.loading}}</p>
+                <p class="mt-1 text-sm text-gray-500">从 <a href="https://apps.apple.com/cn/app/bark-customed-notifications/id1403753865" target="_blank" class="text-indigo-600 hover:text-indigo-800">{{misc.longText_9287}}</a> 中获取的设备Key</p>
               </div>
               <div>
-                <label for="barkIsArchive" class="block text-sm font-medium text-gray-700 mb-2">保存推送</label>
+                <label for="barkIsArchive" class="block text-sm font-medium text-gray-700 mb-2">{{misc.text_4_2334}}</label>
                 <label class="inline-flex items-center">
                   <input type="checkbox" id="barkIsArchive" class="form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                  <span class="ml-2 text-sm text-gray-700">保存推送到历史记录</span>
+                  <span class="ml-2 text-sm text-gray-700">{{subscriptions.longText_58785}}</span>
                 </label>
-                <p class="mt-1 text-sm text-gray-500">勾选后推送消息会保存到 Bark 的历史记录中</p>
+                <p class="mt-1 text-sm text-gray-500">{{subscriptions.longText_26715}}</p>
               </div>
             </div>
             <div class="flex justify-end">
@@ -505,21 +505,21 @@
           </div>
 
           <div id="gotifyConfig" class="config-section">
-            <h4 class="text-md font-medium text-gray-900 mb-3">Gotify 配置</h4>
+            <h4 class="text-md font-medium text-gray-900 mb-3">{{config.longText_11289}}</h4>
             <div class="grid grid-cols-1 gap-4 mb-4">
               <div>
                 <label for="gotifyServerUrl" class="block text-sm font-medium text-gray-700">Server URL</label>
                 <input type="url" id="gotifyServerUrl" placeholder="https://gotify.example.com" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <p class="mt-1 text-sm text-gray-500">你的 Gotify 服务地址（不需要带 /message）。</p>
+                <p class="mt-1 text-sm text-gray-500">{{misc.longText_18608}}</p>
               </div>
               <label for="gotifyAppToken" class="block text-sm font-medium text-gray-700">Application Token</label>
               <div class="mt-1 flex flex-col sm:flex-row sm:items-center gap-3">
-                <input type="text" id="gotifyAppToken" placeholder="留空表示不修改；输入新值将更新" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <input type="text" id="gotifyAppToken" placeholder="{{misc.longText_86051}}" class="flex-1 border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 <button type="button" id="clearGotifyAppToken" class="btn-warning text-white px-4 py-2 rounded-md text-sm font-medium whitespace-nowrap">
                   <i class="fas fa-eraser mr-2"></i>清空
                 </button>
               </div>
-              <p id="GOTIFY_APP_TOKENStatus" class="mt-1 text-xs text-gray-500">加载中...</p>
+              <p id="GOTIFY_APP_TOKENStatus" class="mt-1 text-xs text-gray-500">{{common.loading}}</p>
             </div>
             <div class="flex justify-end">
               <button type="button" id="testGotifyBtn" class="btn-secondary text-white px-4 py-2 rounded-md text-sm font-medium">
@@ -531,7 +531,7 @@
 
         <div class="flex justify-end">
           <button type="submit" class="btn-primary text-white px-6 py-2 rounded-md text-sm font-medium">
-            <i class="fas fa-save mr-2"></i>保存配置
+            <i class="fas fa-save mr-2"></i>{{config.saveConfig}}
           </button>
         </div>
       </form>
@@ -596,15 +596,15 @@
 
     function updateAllSecretStatus() {
       const cfg = window.SECRET_CONFIGURED || {};
-      setSecretStatus('TG_BOT_TOKEN', cfg.TG_BOT_TOKEN ? '已配置（已隐藏）' : '未配置');
-      setSecretStatus('NOTIFYX_API_KEY', cfg.NOTIFYX_API_KEY ? '已配置（已隐藏）' : '未配置');
-      setSecretStatus('WEBHOOK_URL', cfg.WEBHOOK_URL ? '已配置（已隐藏）' : '未配置');
-      setSecretStatus('WEBHOOK_HEADERS', cfg.WEBHOOK_HEADERS ? '已配置（已隐藏）' : '未配置');
-      setSecretStatus('WECHATBOT_WEBHOOK', cfg.WECHATBOT_WEBHOOK ? '已配置（已隐藏）' : '未配置');
-      setSecretStatus('RESEND_API_KEY', cfg.RESEND_API_KEY ? '已配置（已隐藏）' : '未配置');
-      setSecretStatus('BARK_DEVICE_KEY', cfg.BARK_DEVICE_KEY ? '已配置（已隐藏）' : '未配置');
-      setSecretStatus('THIRD_PARTY_API_TOKEN', cfg.THIRD_PARTY_API_TOKEN ? '已配置（已隐藏）' : '未配置');
-      setSecretStatus('GOTIFY_APP_TOKEN', cfg.GOTIFY_APP_TOKEN ? '已配置（已隐藏）' : '未配置');
+      setSecretStatus('TG_BOT_TOKEN', cfg.TG_BOT_TOKEN ? '已配置（已隐藏）' : t('config.text_3_4568'));
+      setSecretStatus('NOTIFYX_API_KEY', cfg.NOTIFYX_API_KEY ? '已配置（已隐藏）' : t('config.text_3_4568'));
+      setSecretStatus('WEBHOOK_URL', cfg.WEBHOOK_URL ? '已配置（已隐藏）' : t('config.text_3_4568'));
+      setSecretStatus('WEBHOOK_HEADERS', cfg.WEBHOOK_HEADERS ? '已配置（已隐藏）' : t('config.text_3_4568'));
+      setSecretStatus('WECHATBOT_WEBHOOK', cfg.WECHATBOT_WEBHOOK ? '已配置（已隐藏）' : t('config.text_3_4568'));
+      setSecretStatus('RESEND_API_KEY', cfg.RESEND_API_KEY ? '已配置（已隐藏）' : t('config.text_3_4568'));
+      setSecretStatus('BARK_DEVICE_KEY', cfg.BARK_DEVICE_KEY ? '已配置（已隐藏）' : t('config.text_3_4568'));
+      setSecretStatus('THIRD_PARTY_API_TOKEN', cfg.THIRD_PARTY_API_TOKEN ? '已配置（已隐藏）' : t('config.text_3_4568'));
+      setSecretStatus('GOTIFY_APP_TOKEN', cfg.GOTIFY_APP_TOKEN ? '已配置（已隐藏）' : t('config.text_3_4568'));
     }
 
     function wireSecretInput(inputId, key) {
@@ -619,7 +619,7 @@
         } else {
           // 空表示“不修改”（默认）
           const cfg = window.SECRET_CONFIGURED || {};
-          setSecretStatus(key, cfg[key] ? '已配置（已隐藏）' : '未配置');
+          setSecretStatus(key, cfg[key] ? '已配置（已隐藏）' : t('config.text_3_4568'));
         }
       });
     }
@@ -657,7 +657,7 @@
         document.getElementById('wechatbotAtMobiles').value = config.WECHATBOT_AT_MOBILES || '';
         document.getElementById('wechatbotAtAll').checked = config.WECHATBOT_AT_ALL === 'true';
         document.getElementById('emailFrom').value = config.EMAIL_FROM || '';
-        document.getElementById('emailFromName').value = config.EMAIL_FROM_NAME || '订阅提醒系统';
+        document.getElementById('emailFromName').value = config.EMAIL_FROM_NAME || t('subscriptions.text_6_8660');
         document.getElementById('emailTo').value = config.EMAIL_TO || '';
         document.getElementById('barkServer').value = config.BARK_SERVER || 'https://api.day.app';
         document.getElementById('barkIsArchive').checked = config.BARK_IS_ARCHIVE === 'true';
@@ -721,24 +721,24 @@
       const fallbackTimezone = 'UTC';
       
       const timezones = [
-        { value: 'UTC', name: '世界标准时间', offset: '+0' },
-        { value: 'Asia/Shanghai', name: '中国标准时间', offset: '+8' },
-        { value: 'Asia/Hong_Kong', name: '香港时间', offset: '+8' },
-        { value: 'Asia/Taipei', name: '台北时间', offset: '+8' },
-        { value: 'Asia/Singapore', name: '新加坡时间', offset: '+8' },
-        { value: 'Asia/Tokyo', name: '日本时间', offset: '+9' },
-        { value: 'Asia/Seoul', name: '韩国时间', offset: '+9' },
-        { value: 'America/New_York', name: '美国东部时间', offset: '-5' },
-        { value: 'America/Chicago', name: '美国中部时间', offset: '-6' },
-        { value: 'America/Denver', name: '美国山地时间', offset: '-7' },
-        { value: 'America/Los_Angeles', name: '美国太平洋时间', offset: '-8' },
-        { value: 'Europe/London', name: '英国时间', offset: '+0' },
-        { value: 'Europe/Paris', name: '巴黎时间', offset: '+1' },
-        { value: 'Europe/Berlin', name: '柏林时间', offset: '+1' },
-        { value: 'Europe/Moscow', name: '莫斯科时间', offset: '+3' },
-        { value: 'Australia/Sydney', name: '悉尼时间', offset: '+10' },
-        { value: 'Australia/Melbourne', name: '墨尔本时间', offset: '+10' },
-        { value: 'Pacific/Auckland', name: '奥克兰时间', offset: '+12' }
+        { value: 'UTC', name: t('misc.text_6_7756'), offset: '+0' },
+        { value: 'Asia/Shanghai', name: t('misc.text_6_8125'), offset: '+8' },
+        { value: 'Asia/Hong_Kong', name: t('misc.text_4_4149'), offset: '+8' },
+        { value: 'Asia/Taipei', name: t('misc.text_4_1799'), offset: '+8' },
+        { value: 'Asia/Singapore', name: t('misc.text_5_2463'), offset: '+8' },
+        { value: 'Asia/Tokyo', name: t('misc.text_4_7589'), offset: '+9' },
+        { value: 'Asia/Seoul', name: t('misc.text_4_3806'), offset: '+9' },
+        { value: 'America/New_York', name: t('misc.text_6_751'), offset: '-5' },
+        { value: 'America/Chicago', name: t('misc.text_6_8311'), offset: '-6' },
+        { value: 'America/Denver', name: t('misc.text_6_3990'), offset: '-7' },
+        { value: 'America/Los_Angeles', name: t('misc.longText_81469'), offset: '-8' },
+        { value: 'Europe/London', name: t('misc.text_4_325'), offset: '+0' },
+        { value: 'Europe/Paris', name: t('misc.text_4_3501'), offset: '+1' },
+        { value: 'Europe/Berlin', name: t('misc.text_4_907'), offset: '+1' },
+        { value: 'Europe/Moscow', name: t('misc.text_5_4275'), offset: '+3' },
+        { value: 'Australia/Sydney', name: t('misc.text_4_9972'), offset: '+10' },
+        { value: 'Australia/Melbourne', name: t('misc.text_5_6136'), offset: '+10' },
+        { value: 'Pacific/Auckland', name: t('misc.text_5_8264'), offset: '+12' }
       ];
       
       // 清空现有选项
@@ -817,7 +817,7 @@
         .map(cb => cb.value);
 
       if (enabledNotifiers.length === 0) {
-        showToast('请至少选择一种通知方式', 'warning');
+        showToast(t('config.longText_72812'), 'warning');
         return;
       }
 
@@ -913,7 +913,7 @@
             window.location.reload();
           }
         } else {
-          showToast(t('messages.saveError') + ': ' + (result.message || '未知错误'), 'error');
+          showToast(t('messages.saveError') + ': ' + (result.message || t('errors.unknownError')), 'error');
         }
       } catch (error) {
         console.error('保存配置失败:', error);
@@ -939,8 +939,8 @@
       const originalContent = button.innerHTML;
       const serviceName = type === 'telegram' ? 'Telegram' :
                           type === 'notifyx' ? 'NotifyX' :
-                          type === 'wechatbot' ? '企业微信机器人' :
-                          type === 'email' ? '邮件通知' :
+                          type === 'wechatbot' ? t('misc.longText_69533') :
+                          type === 'email' ? t('config.email') :
                           type === 'bark' ? 'Bark' :
                           type === 'gotify' ? 'Gotify' : 'Webhook 通知';
 
@@ -1004,7 +1004,7 @@
         try {
           result = await response.json();
         } catch (_) {
-          result = { success: false, message: '服务返回了无法解析的响应' };
+          result = { success: false, message: t('misc.longText_36350') };
         }
 
         if (response.ok && result.success) {
@@ -1127,24 +1127,24 @@
             
             // 时区中文名称映射
             const timezoneNames = {
-              'UTC': '世界标准时间',
-              'Asia/Shanghai': '中国标准时间',
-              'Asia/Hong_Kong': '香港时间',
-              'Asia/Taipei': '台北时间',
-              'Asia/Singapore': '新加坡时间',
-              'Asia/Tokyo': '日本时间',
-              'Asia/Seoul': '韩国时间',
-              'America/New_York': '美国东部时间',
-              'America/Los_Angeles': '美国太平洋时间',
-              'America/Chicago': '美国中部时间',
-              'America/Denver': '美国山地时间',
-              'Europe/London': '英国时间',
-              'Europe/Paris': '巴黎时间',
-              'Europe/Berlin': '柏林时间',
-              'Europe/Moscow': '莫斯科时间',
-              'Australia/Sydney': '悉尼时间',
-              'Australia/Melbourne': '墨尔本时间',
-              'Pacific/Auckland': '奥克兰时间'
+              'UTC': t('misc.text_6_7756'),
+              'Asia/Shanghai': t('misc.text_6_8125'),
+              'Asia/Hong_Kong': t('misc.text_4_4149'),
+              'Asia/Taipei': t('misc.text_4_1799'),
+              'Asia/Singapore': t('misc.text_5_2463'),
+              'Asia/Tokyo': t('misc.text_4_7589'),
+              'Asia/Seoul': t('misc.text_4_3806'),
+              'America/New_York': t('misc.text_6_751'),
+              'America/Los_Angeles': t('misc.longText_81469'),
+              'America/Chicago': t('misc.text_6_8311'),
+              'America/Denver': t('misc.text_6_3990'),
+              'Europe/London': t('misc.text_4_325'),
+              'Europe/Paris': t('misc.text_4_3501'),
+              'Europe/Berlin': t('misc.text_4_907'),
+              'Europe/Moscow': t('misc.text_5_4275'),
+              'Australia/Sydney': t('misc.text_4_9972'),
+              'Australia/Melbourne': t('misc.text_5_6136'),
+              'Pacific/Auckland': t('misc.text_5_8264')
             };
             
             const offsetStr = offset >= 0 ? '+' + offset : offset;

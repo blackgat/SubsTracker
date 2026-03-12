@@ -96,7 +96,7 @@
         </div>
 
         <div class="flex items-center md:hidden ml-auto">
-          <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-label="切换导航菜单" class="text-gray-600 hover:text-indigo-600 focus:outline-none p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-colors">
+          <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-label="{{nav.toggleMenu}}" class="text-gray-600 hover:text-indigo-600 focus:outline-none p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-colors">
             <i class="fas fa-bars text-xl"></i>
           </button>
         </div>
@@ -107,16 +107,16 @@
       <div class="px-4 pt-2 pb-4 space-y-2">
         <div id="mobileTimeDisplay" class="px-3 py-2 text-xs text-indigo-600 text-right border-b border-gray-100 mb-2"></div>
         <a href="/admin/dashboard" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 active:bg-indigo-100 transition-colors">
-          <i class="fas fa-chart-line w-6 text-center mr-2"></i>仪表盘
+          <i class="fas fa-chart-line w-6 text-center mr-2"></i>{{nav.dashboard}}
         </a>
         <a href="/admin" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 active:bg-indigo-100 transition-colors">
-          <i class="fas fa-list w-6 text-center mr-2"></i>订阅列表
+          <i class="fas fa-list w-6 text-center mr-2"></i>{{nav.subscriptionList}}
         </a>
         <a href="/admin/config" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 active:bg-indigo-100 transition-colors">
-          <i class="fas fa-cog w-6 text-center mr-2"></i>系统配置
+          <i class="fas fa-cog w-6 text-center mr-2"></i>{{nav.systemConfig}}
         </a>
         <a href="/api/logout" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-red-50 hover:text-red-600 active:bg-red-100 transition-colors">
-          <i class="fas fa-sign-out-alt w-6 text-center mr-2"></i>退出登录
+          <i class="fas fa-sign-out-alt w-6 text-center mr-2"></i>{{nav.logout}}
         </a>
       </div>
     </div>
@@ -124,17 +124,17 @@
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="mb-6">
-      <h2 class="text-2xl font-bold text-gray-800">📊 仪表板</h2>
-      <p class="text-sm text-gray-500 mt-1">订阅费用和活动概览（统计金额已折合为 CNY）</p>
+      <h2 class="text-2xl font-bold text-gray-800">{{dashboard.text_5_5931}}</h2>
+      <p class="text-sm text-gray-500 mt-1">{{dashboard.longText_69767}}</p>
     </div>
 
     <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
       <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
         <div class="flex items-center gap-2">
           <i class="fas fa-history text-indigo-500"></i>
-          <h3 class="text-lg font-medium text-gray-900">自动提醒任务状态</h3>
+          <h3 class="text-lg font-medium text-gray-900">{{subscriptions.longText_9670}}</h3>
         </div>
-        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full">Cron 可观测性</span>
+        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full">{{cron.longText_34935}}</span>
       </div>
       <div class="p-6" id="schedulerStatus">
         <div class="loading-skeleton"></div>
@@ -151,9 +151,9 @@
       <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
         <div class="flex items-center gap-2">
           <i class="fas fa-calendar-check text-blue-500"></i>
-          <h3 class="text-lg font-medium text-gray-900">最近支付</h3>
+          <h3 class="text-lg font-medium text-gray-900">{{subscriptions.text_4_1005}}</h3>
         </div>
-        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full">过去7天</span>
+        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full">{{misc.text_4_7691}}</span>
       </div>
       <div class="p-6" id="recentPayments">
         <div class="loading-skeleton"></div>
@@ -164,9 +164,9 @@
       <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
         <div class="flex items-center gap-2">
           <i class="fas fa-clock text-yellow-500"></i>
-          <h3 class="text-lg font-medium text-gray-900">即将续费</h3>
+          <h3 class="text-lg font-medium text-gray-900">{{dashboard.upcomingRenewals}}</h3>
         </div>
-        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full">未来7天</span>
+        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full">{{misc.text_4_6301}}</span>
       </div>
       <div class="p-6" id="upcomingRenewals">
         <div class="loading-skeleton"></div>
@@ -177,7 +177,7 @@
       <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
         <div class="flex items-center gap-2">
           <i class="fas fa-stream text-indigo-500"></i>
-          <h3 class="text-lg font-medium text-gray-900">自动提醒任务历史（最近10次）</h3>
+          <h3 class="text-lg font-medium text-gray-900">{{subscriptions.longText_75148}}</h3>
         </div>
       </div>
       <div class="p-6" id="schedulerStatusHistory">
@@ -190,9 +190,9 @@
         <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
           <div class="flex items-center gap-2">
             <i class="fas fa-chart-bar text-purple-500"></i>
-            <h3 class="text-lg font-medium text-gray-900">按类型支出排行</h3>
+            <h3 class="text-lg font-medium text-gray-900">{{dashboard.longText_42559}}</h3>
           </div>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full">年度统计 (折合CNY)</span>
+          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full">{{dashboard.longText_83706}}</span>
         </div>
         <div class="p-6" id="expenseByType">
           <div class="loading-skeleton"></div>
@@ -203,9 +203,9 @@
         <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
           <div class="flex items-center gap-2">
             <i class="fas fa-folder text-green-500"></i>
-            <h3 class="text-lg font-medium text-gray-900">按分类支出统计</h3>
+            <h3 class="text-lg font-medium text-gray-900">{{dashboard.longText_1159}}</h3>
           </div>
-          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full">年度统计 (折合CNY)</span>
+          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full">{{dashboard.longText_83706}}</span>
         </div>
         <div class="p-6" id="expenseByCategory">
           <div class="loading-skeleton"></div>
@@ -288,39 +288,39 @@
         if (schedulerStatusEl) {
           const status = data.schedulerStatus;
           if (!status) {
-            schedulerStatusEl.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🕐</div><div class="empty-state-text">暂无定时任务执行记录（等待下一次 Cron）</div></div>';
+            schedulerStatusEl.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🕐</div><div class="empty-state-text">{{cron.noCronHistory}}</div></div>';
           } else {
             const sendResult = status.sendResult || {};
-            const runAt = status.lastRunAt ? new Date(status.lastRunAt).toLocaleString('zh-CN') : '未知';
+            const runAt = status.lastRunAt ? new Date(status.lastRunAt).toLocaleString('zh-CN') : t('misc.unknown');
             const configuredHours = Array.isArray(status.configuredHours) && status.configuredHours.length > 0
               ? status.configuredHours.join(', ')
-              : '全部时段';
+              : t('misc.allHours');
             const sentBadge = status.sent
-              ? '<span class="px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-700">本次有发送</span>'
-              : '<span class="px-2 py-1 rounded text-xs font-medium bg-yellow-100 text-yellow-700">本次未发送</span>';
+              ? '<span class="px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-700">{{cron.sentThisTime}}</span>'
+              : '<span class="px-2 py-1 rounded text-xs font-medium bg-yellow-100 text-yellow-700">{{cron.notSentThisTime}}</span>';
 
             schedulerStatusEl.innerHTML = `
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div class="bg-gray-50 rounded-md p-3">
-                  <div class="text-gray-500">最近执行时间</div>
+                  <div class="text-gray-500">{{cron.lastRunTime}}</div>
                   <div class="text-gray-900 font-medium mt-1">${runAt}</div>
                 </div>
                 <div class="bg-gray-50 rounded-md p-3">
-                  <div class="text-gray-500">状态</div>
+                  <div class="text-gray-500">{{common.status}}</div>
                   <div class="mt-1">${sentBadge}</div>
                 </div>
                 <div class="bg-gray-50 rounded-md p-3">
-                  <div class="text-gray-500">当前小时 / 配置时段（UTC）</div>
+                  <div class="text-gray-500">{{config.currentHourAndConfiguredHours}}</div>
                   <div class="text-gray-900 font-medium mt-1">${status.currentHour || '--'} / ${configuredHours}</div>
                 </div>
                 <div class="bg-gray-50 rounded-md p-3">
-                  <div class="text-gray-500">检查与命中</div>
-                  <div class="text-gray-900 font-medium mt-1">检查 ${status.checkedSubscriptions || 0} 条，命中 ${status.expiringMatched || 0} 条</div>
+                  <div class="text-gray-500">{{cron.checkAndMatch}}</div>
+                  <div class="text-gray-900 font-medium mt-1">{{cron.longText_92509}}</div>
                 </div>
                 <div class="bg-gray-50 rounded-md p-3 md:col-span-2">
-                  <div class="text-gray-500">发送结果</div>
-                  <div class="text-gray-900 font-medium mt-1">尝试 ${sendResult.attempted || 0} 个渠道，成功 ${sendResult.successCount || 0}，失败 ${sendResult.failedCount || 0}，去重跳过 ${status.dedupeSkipped || 0}</div>
-                  <div class="text-xs text-gray-500 mt-1">${status.reason || '暂无详情'}</div>
+                  <div class="text-gray-500">{{cron.sendResult}}</div>
+                  <div class="text-gray-900 font-medium mt-1">{{messages.longText_463}}</div>
+                  <div class="text-xs text-gray-500 mt-1">${status.reason || t('misc.noDetails')}</div>
                 </div>
               </div>
             `;
@@ -331,11 +331,11 @@
         const schedulerHistoryEl = document.getElementById('schedulerStatusHistory');
         if (schedulerHistoryEl) {
           if (schedulerHistory.length === 0) {
-            schedulerHistoryEl.innerHTML = '<div class="text-sm text-gray-500">暂无历史记录</div>';
+            schedulerHistoryEl.innerHTML = '<div class="text-sm text-gray-500">{{subscriptions.noHistory}}</div>';
           } else {
             schedulerHistoryEl.innerHTML = schedulerHistory.slice(0, 10).map(item => {
-              const when = item.lastRunAt ? new Date(item.lastRunAt).toLocaleString('zh-CN') : '未知时间';
-              const sent = item.sent ? '已发送' : '未发送';
+              const when = item.lastRunAt ? new Date(item.lastRunAt).toLocaleString('zh-CN') : t('misc.unknownTime');
+              const sent = item.sent ? t('cron.sent') : t('cron.notSent');
               const reason = item.reason || '-';
               return `<div class="py-2 border-b border-gray-100 last:border-b-0 text-sm"><div class="font-medium text-gray-800">${when} · ${sent}</div><div class="text-xs text-gray-500 mt-1">${reason}</div></div>`;
             }).join('');
@@ -344,29 +344,29 @@
 
         document.getElementById('statsGrid').innerHTML=`
           <div class="stat-card">
-            <div class="stat-card-header">月度支出 (CNY)</div>
+            <div class="stat-card-header">{{dashboard.longText_44912}}</div>
             <div class="stat-card-value">¥${data.monthlyExpense.amount.toFixed(2)}</div>
-            <div class="stat-card-subtitle">本月折合支出</div>
+            <div class="stat-card-subtitle">{{dashboard.currentMonthExpense}}</div>
             <div class="stat-card-trend ${data.monthlyExpense.trendDirection}">
               <i class="fas fa-arrow-${data.monthlyExpense.trendDirection==='up'?'up':data.monthlyExpense.trendDirection==='down'?'down':'right'}"></i>
               ${data.monthlyExpense.trend}%
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-card-header">年度支出 (CNY)</div>
+            <div class="stat-card-header">{{dashboard.longText_12283}}</div>
             <div class="stat-card-value">¥${data.yearlyExpense.amount.toFixed(2)}</div>
-            <div class="stat-card-subtitle">月均支出: ¥${data.yearlyExpense.monthlyAverage.toFixed(2)}</div>
+            <div class="stat-card-subtitle">{{dashboard.longText_60414}}</div>
           </div>
           <div class="stat-card">
-            <div class="stat-card-header">活跃订阅</div>
+            <div class="stat-card-header">{{dashboard.activeSubscriptions}}</div>
             <div class="stat-card-value">${data.activeSubscriptions.active}</div>
-            <div class="stat-card-subtitle">总订阅数: ${data.activeSubscriptions.total}</div>
-            ${data.activeSubscriptions.expiringSoon>0?`<div class="stat-card-trend down"><i class="fas fa-exclamation-circle"></i>${data.activeSubscriptions.expiringSoon} 即将到期</div>`:''}
+            <div class="stat-card-subtitle">{{subscriptions.longText_74261}}</div>
+            ${data.activeSubscriptions.expiringSoon>0?`<div class="stat-card-trend down"><i class="fas fa-exclamation-circle"></i>{{subscriptions.longText_8613}}</div>`:''}
           </div>
         `;
         
         const rp=document.getElementById('recentPayments');
-        rp.innerHTML=data.recentPayments.length===0?'<div class="empty-state"><div class="empty-state-icon">📭</div><div class="empty-state-text">过去7天内没有支付记录</div></div>':
+        rp.innerHTML=data.recentPayments.length===0?'<div class="empty-state"><div class="empty-state-icon">📭</div><div class="empty-state-text">{{subscriptions.noRecentPayments}}</div></div>':
         data.recentPayments.map(s=>`
           <div class="list-item">
             <div class="list-item-content">
@@ -381,14 +381,14 @@
         `).join('');
         
         const ur=document.getElementById('upcomingRenewals');
-        ur.innerHTML=data.upcomingRenewals.length===0?'<div class="empty-state"><div class="empty-state-icon">✅</div><div class="empty-state-text">未来7天内没有即将续费的订阅</div></div>':
+        ur.innerHTML=data.upcomingRenewals.length===0?'<div class="empty-state"><div class="empty-state-icon">✅</div><div class="empty-state-text">{{subscriptions.noUpcomingRenewals}}</div></div>':
         data.upcomingRenewals.map(s=>`
           <div class="list-item">
             <div class="list-item-content">
               <div class="list-item-name">${s.name}</div>
               <div class="list-item-meta">
                 <span><i class="fas fa-clock"></i> ${new Date(s.renewalDate).toLocaleDateString('zh-CN')}</span>
-                <span style="color:#f59e0b;font-weight:600">${s.daysUntilRenewal} 天后</span>
+                <span style="color:#f59e0b;font-weight:600">{{misc.longText_16459}}</span>
                 ${s.customType?`<span class="list-item-badge">${s.customType}</span>`:''}
               </div>
             </div>
@@ -397,7 +397,7 @@
         `).join('');
         
         const et=document.getElementById('expenseByType');
-        et.innerHTML=data.expenseByType.length===0?'<div class="empty-state"><div class="empty-state-icon">📊</div><div class="empty-state-text">暂无支出数据</div></div>':
+        et.innerHTML=data.expenseByType.length===0?'<div class="empty-state"><div class="empty-state-icon">📊</div><div class="empty-state-text">{{dashboard.noExpenseData}}</div></div>':
         data.expenseByType.map((item,i)=>`
           <div class="ranking-item">
             <div class="ranking-item-header">
@@ -414,7 +414,7 @@
         `).join('');
         
         const ec=document.getElementById('expenseByCategory');
-        ec.innerHTML=data.expenseByCategory.length===0?'<div class="empty-state"><div class="empty-state-icon">📂</div><div class="empty-state-text">暂无支出数据</div></div>':
+        ec.innerHTML=data.expenseByCategory.length===0?'<div class="empty-state"><div class="empty-state-icon">📂</div><div class="empty-state-text">{{dashboard.noExpenseData}}</div></div>':
         data.expenseByCategory.map((item,i)=>`
           <div class="ranking-item">
             <div class="ranking-item-header">

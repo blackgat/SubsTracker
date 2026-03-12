@@ -376,7 +376,7 @@
         </div>
 
         <div class="flex items-center md:hidden ml-auto">
-          <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-label="切换导航菜单" class="text-gray-600 hover:text-indigo-600 focus:outline-none p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-colors">
+          <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-label="{{nav.toggleMenu}}" class="text-gray-600 hover:text-indigo-600 focus:outline-none p-2 rounded-md hover:bg-gray-100 active:bg-gray-200 transition-colors">
             <i class="fas fa-bars text-xl"></i>
           </button>
         </div>
@@ -396,7 +396,7 @@
           <i class="fas fa-cog w-6 text-center mr-2"></i>{{nav.systemConfig}}
         </a>
         <a href="/api/logout" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-red-50 hover:text-red-600 active:bg-red-100 transition-colors">
-          <i class="fas fa-sign-out-alt w-6 text-center mr-2"></i>退出登录
+          <i class="fas fa-sign-out-alt w-6 text-center mr-2"></i>{{nav.logout}}
         </a>
       </div>
     </div>
@@ -417,9 +417,9 @@
           </div>
           <div class="sm:w-36 lg:w-32">
             <select id="modeFilter" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-white text-sm">
-              <option value="">全部模式</option>
-              <option value="cycle">循环订阅</option>
-              <option value="reset">到期重置</option>
+              <option value="">{{misc.text_4_9129}}</option>
+              <option value="cycle">{{subscriptions.text_4_1168}}</option>
+              <option value="reset">{{subscriptions.text_4_5431}}</option>
             </select>
           </div>
           <div class="sm:w-44 lg:w-40">
@@ -432,10 +432,10 @@
         <div class="flex items-center space-x-3 lg:space-x-4">
         <label class="lunar-toggle">
           <input type="checkbox" id="listShowLunar" class="form-checkbox h-4 w-4 text-indigo-600 shrink-0">
-          <span class="text-gray-700">显示农历</span>
+          <span class="text-gray-700">{{misc.text_4_7991}}</span>
         </label>
         <button id="addSubscriptionBtn" class="btn-primary text-white px-4 py-2 rounded-md text-sm font-medium flex items-center shrink-0">
-          <i class="fas fa-plus mr-2"></i>添加新订阅
+          <i class="fas fa-plus mr-2"></i>{{subscriptions.addNew}}
         </button>
       </div>
       </div>
@@ -450,19 +450,19 @@
                 {{subscriptions.name}}
               </th>
               <th scope="col" class="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider" style="width: 13%;">
-                类型
+                {{subscriptions.type}}
               </th>
               <th scope="col" class="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider" style="width: 18%;">
-                到期 <i class="fas fa-sort-up ml-1 text-indigo-500" title="按到期时间升序排列"></i>
+                {{subscriptions.expiry}} <i class="fas fa-sort-up ml-1 text-indigo-500" title="{{subscriptions.longText_36033}}"></i>
               </th>
               <th scope="col" class="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider" style="width: 10%;">
                 {{subscriptions.amount}}
               </th>
               <th scope="col" class="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider" style="width: 13%;">
-                提醒
+                {{subscriptions.reminder}}
               </th>
               <th scope="col" class="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider" style="width: 10%;">
-                状态
+                {{common.status}}
               </th>
               <th scope="col" class="px-4 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider" style="width: 13%;">
                 {{subscriptions.actions}}
@@ -490,32 +490,32 @@
       <form id="subscriptionForm" class="p-6 space-y-5">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">订阅名称 *</label>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">{{subscriptions.text_6_8161}}</label>
             <input type="text" id="name" required
               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-white">
             <div class="error-message text-red-500" data-for="name"></div>
           </div>
           
           <div class="custom-dropdown-wrapper">
-            <label for="customType" class="block text-sm font-medium text-gray-700 mb-1">订阅类型</label>
-            <input type="text" id="customType" placeholder="选择或输入自定义类型" autocomplete="off"
+            <label for="customType" class="block text-sm font-medium text-gray-700 mb-1">{{subscriptions.text_4_2340}}</label>
+            <input type="text" id="customType" placeholder="{{misc.longText_35840}}" autocomplete="off"
               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-white">
             <div id="customTypeDropdown" class="custom-dropdown-list"></div>
           </div>
 
           <div class="custom-dropdown-wrapper">
-            <label for="category" class="block text-sm font-medium text-gray-700 mb-1">分类标签</label>
-            <input type="text" id="category" placeholder="选择或输入自定义标签" autocomplete="off"
+            <label for="category" class="block text-sm font-medium text-gray-700 mb-1">{{misc.text_4_7119}}</label>
+            <input type="text" id="category" placeholder="{{misc.longText_98704}}" autocomplete="off"
               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-white">
             <div id="categoryDropdown" class="custom-dropdown-list"></div>
-            <p class="mt-1 text-xs text-gray-500">可输入多个标签并使用"/"分隔</p>
+            <p class="mt-1 text-xs text-gray-500">{{misc.longText_68288}}</p>
           </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">
-              费用设置 <span class="text-gray-400 text-xs ml-1">可选</span>
+              费用设置 <span class="text-gray-400 text-xs ml-1">{{misc.text_2_5138}}</span>
             </label>
             <div class="flex space-x-2">
               <div class="w-24 shrink-0"> 
@@ -532,30 +532,30 @@
                 </select>
               </div>
               <div class="relative flex-1">
-                <input type="number" id="amount" step="0.01" min="0" placeholder="例如: 15.00"
+                <input type="number" id="amount" step="0.01" min="0" placeholder="{{misc.longText_8254}}"
                   class="h-10 w-full px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
               </div>
             </div>
-            <p class="mt-1 text-xs text-gray-500">用于统计支出和生成仪表盘</p>
+            <p class="mt-1 text-xs text-gray-500">{{dashboard.longText_58406}}</p>
           </div>
 
           <div>
              <div class="flex justify-between items-center mb-1">
-                <label for="subscriptionMode" class="block text-sm font-medium text-gray-700">订阅模式</label>
+                <label for="subscriptionMode" class="block text-sm font-medium text-gray-700">{{subscriptions.text_4_7353}}</label>
              </div>
             <select id="subscriptionMode" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-white h-10">
-              <option value="cycle" selected>📅 循环订阅</option>
-              <option value="reset">⏳ 到期重置</option>
+              <option value="cycle" selected>{{subscriptions.text_6_2550}}</option>
+              <option value="reset">{{subscriptions.text_6_4038}}</option>
             </select>
             
             <div class="mt-2 flex items-center space-x-3">
                  <label class="inline-flex items-center cursor-pointer select-none">
                   <input type="checkbox" id="showLunar" class="form-checkbox h-4 w-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500">
-                  <span class="ml-2 text-sm text-gray-600">显示农历日期</span>
+                  <span class="ml-2 text-sm text-gray-600">{{misc.text_6_9274}}</span>
                 </label>
                 <label class="inline-flex items-center cursor-pointer select-none">
                   <input type="checkbox" id="useLunar" class="form-checkbox h-4 w-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500">
-                  <span class="ml-2 text-sm text-gray-600">农历周期</span>
+                  <span class="ml-2 text-sm text-gray-600">{{misc.text_4_9695}}</span>
                 </label>
             </div>
           </div>
@@ -575,41 +575,41 @@
                   <div class="flex justify-between items-center mb-4">
                     <button type="button" id="startDatePrevMonth" class="text-gray-600 hover:text-gray-800"><i class="fas fa-chevron-left"></i></button>
                     <div class="flex items-center space-x-2">
-                      <span id="startDateMonth" class="font-medium text-gray-900 cursor-pointer hover:text-indigo-600">1月</span>
+                      <span id="startDateMonth" class="font-medium text-gray-900 cursor-pointer hover:text-indigo-600">{{misc.text_2_6610}}</span>
                       <span class="text-gray-400">|</span>
                       <span id="startDateYear" class="font-medium text-gray-900 cursor-pointer hover:text-indigo-600">2024</span>
                     </div>
                     <button type="button" id="startDateNextMonth" class="text-gray-600 hover:text-gray-800"><i class="fas fa-chevron-right"></i></button>
                   </div>
-                  <div id="startDateMonthPicker" class="hidden mb-4"><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-900">选择月份</span><button type="button" id="startDateBackToCalendar" class="text-gray-600 hover:text-gray-800"><i class="fas fa-times"></i></button></div><div class="grid grid-cols-3 gap-2"><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="0">1月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="1">2月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="2">3月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="3">4月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="4">5月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="5">6月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="6">7月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="7">8月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="8">9月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="9">10月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="10">11月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="11">12月</button></div></div>
-                  <div id="startDateYearPicker" class="hidden mb-4"><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-900">选择年份</span><button type="button" id="startDateBackToCalendarFromYear" class="text-gray-600 hover:text-gray-800"><i class="fas fa-times"></i></button></div><div class="flex justify-between items-center mb-3"><button type="button"  id="startDatePrevYearDecade" class="text-gray-600 hover:text-gray-800"><i class="fas fa-chevron-left"></i></button><span id="startDateYearRange" class="font-medium text-gray-900">2020-2029</span><button type="button"  id="startDateNextYearDecade" class="text-gray-600 hover:text-gray-800"><i class="fas fa-chevron-right"></i></button></div><div id="startDateYearGrid" class="grid grid-cols-3 gap-2"></div></div>
-                  <div class="grid grid-cols-7 gap-2 mb-3"><div class="text-center text-sm font-semibold text-gray-600 py-2">日</div><div class="text-center text-sm font-semibold text-gray-600 py-2">一</div><div class="text-center text-sm font-semibold text-gray-600 py-2">二</div><div class="text-center text-sm font-semibold text-gray-600 py-2">三</div><div class="text-center text-sm font-semibold text-gray-600 py-2">四</div><div class="text-center text-sm font-semibold text-gray-600 py-2">五</div><div class="text-center text-sm font-semibold text-gray-600 py-2">六</div></div><div id="startDateCalendar" class="grid grid-cols-7 gap-2"></div>
-                  <div class="mt-4 pt-3 border-t border-gray-200"><button type="button" id="startDateGoToToday" class="w-full px-3 py-2 text-sm text-indigo-600 hover:bg-indigo-50 rounded-md"><i class="fas fa-calendar-day mr-2"></i>回到今天</button></div>
+                  <div id="startDateMonthPicker" class="hidden mb-4"><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-900">{{misc.text_4_2228}}</span><button type="button" id="startDateBackToCalendar" class="text-gray-600 hover:text-gray-800"><i class="fas fa-times"></i></button></div><div class="grid grid-cols-3 gap-2"><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="0">{{misc.text_2_6610}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="1">{{misc.text_2_9252}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="2">{{misc.text_2_880}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="3">{{misc.text_2_7019}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="4">{{misc.text_2_4766}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="5">{{misc.text_2_38}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="6">{{misc.text_2_635}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="7">{{misc.text_2_4105}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="8">{{misc.text_2_2999}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="9">{{misc.text_3_1843}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="10">{{misc.text_3_9954}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="11">{{misc.text_3_5339}}</button></div></div>
+                  <div id="startDateYearPicker" class="hidden mb-4"><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-900">{{misc.text_4_6602}}</span><button type="button" id="startDateBackToCalendarFromYear" class="text-gray-600 hover:text-gray-800"><i class="fas fa-times"></i></button></div><div class="flex justify-between items-center mb-3"><button type="button"  id="startDatePrevYearDecade" class="text-gray-600 hover:text-gray-800"><i class="fas fa-chevron-left"></i></button><span id="startDateYearRange" class="font-medium text-gray-900">2020-2029</span><button type="button"  id="startDateNextYearDecade" class="text-gray-600 hover:text-gray-800"><i class="fas fa-chevron-right"></i></button></div><div id="startDateYearGrid" class="grid grid-cols-3 gap-2"></div></div>
+                  <div class="grid grid-cols-7 gap-2 mb-3"><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_2416}}</div><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_2003}}</div><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_2582}}</div><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_2096}}</div><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_8706}}</div><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_5775}}</div><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_6873}}</div></div><div id="startDateCalendar" class="grid grid-cols-7 gap-2"></div>
+                  <div class="mt-4 pt-3 border-t border-gray-200"><button type="button" id="startDateGoToToday" class="w-full px-3 py-2 text-sm text-indigo-600 hover:bg-indigo-50 rounded-md"><i class="fas fa-calendar-day mr-2"></i>{{misc.text_4_576}}</button></div>
                </div>
             </div>
             <div id="startDateLunar" class="lunar-display pl-1"></div>
           </div>
           
           <div>
-            <label for="periodValue" class="block text-sm font-medium text-gray-700 mb-1">周期数值 *</label>
+            <label for="periodValue" class="block text-sm font-medium text-gray-700 mb-1">{{misc.text_6_992}}</label>
             <input type="number" id="periodValue" min="1" value="1" required
               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-white">
           </div>
           
           <div>
-            <label for="periodUnit" class="block text-sm font-medium text-gray-700 mb-1">周期单位 *</label>
+            <label for="periodUnit" class="block text-sm font-medium text-gray-700 mb-1">{{misc.text_6_600}}</label>
             <select id="periodUnit" required
               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-white">
-              <option value="day">天</option>
-              <option value="month" selected>月</option>
-              <option value="year">年</option>
+              <option value="day">{{misc.text_1_2244}}</option>
+              <option value="month" selected>{{misc.text_1_1759}}</option>
+              <option value="year">{{misc.text_1_8086}}</option>
             </select>
           </div>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-              <label for="expiryDate" class="block text-sm font-medium text-gray-700 mb-1">到期日期 *</label>
+              <label for="expiryDate" class="block text-sm font-medium text-gray-700 mb-1">{{subscriptions.text_6_5247}}</label>
               <div class="relative">
                 <input type="text" id="expiryDate" required
                   class="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-white"
@@ -620,13 +620,13 @@
                 <div id="expiryDatePicker" class="custom-date-picker hidden absolute top-full left-0 z-50 bg-white border border-gray-300 rounded-md shadow-lg p-4 w-full">
                     <div class="flex justify-between items-center mb-4">
                       <button type="button" id="expiryDatePrevMonth" class="text-gray-600 hover:text-gray-800"><i class="fas fa-chevron-left"></i></button>
-                      <div class="flex items-center space-x-2"><span id="expiryDateMonth" class="font-medium text-gray-900 cursor-pointer hover:text-indigo-600">1月</span><span class="text-gray-400">|</span><span id="expiryDateYear" class="font-medium text-gray-900 cursor-pointer hover:text-indigo-600">2024</span></div>
+                      <div class="flex items-center space-x-2"><span id="expiryDateMonth" class="font-medium text-gray-900 cursor-pointer hover:text-indigo-600">{{misc.text_2_6610}}</span><span class="text-gray-400">|</span><span id="expiryDateYear" class="font-medium text-gray-900 cursor-pointer hover:text-indigo-600">2024</span></div>
                       <button type="button" id="expiryDateNextMonth" class="text-gray-600 hover:text-gray-800"><i class="fas fa-chevron-right"></i></button>
                     </div>
-                    <div id="expiryDateMonthPicker" class="hidden mb-4"><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-900">选择月份</span><button type="button" id="expiryDateBackToCalendar" class="text-gray-600 hover:text-gray-800"><i class="fas fa-times"></i></button></div><div class="grid grid-cols-3 gap-2"><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="0">1月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="1">2月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="2">3月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="3">4月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="4">5月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="5">6月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="6">7月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="7">8月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="8">9月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="9">10月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="10">11月</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="11">12月</button></div></div>
-                    <div id="expiryDateYearPicker" class="hidden mb-4"><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-900">选择年份</span><button type="button" id="expiryDateBackToCalendarFromYear" class="text-gray-600 hover:text-gray-800"><i class="fas fa-times"></i></button></div><div class="flex justify-between items-center mb-3"><button type="button" id="expiryDatePrevYearDecade" class="text-gray-600 hover:text-gray-800"><i class="fas fa-chevron-left"></i></button><span id="expiryDateYearRange" class="font-medium text-gray-900">2020-2029</span><button type="button" id="expiryDateNextYearDecade" class="text-gray-600 hover:text-gray-800"><i class="fas fa-chevron-right"></i></button></div><div id="expiryDateYearGrid" class="grid grid-cols-3 gap-2"></div></div>
-                    <div class="grid grid-cols-7 gap-2 mb-3"><div class="text-center text-sm font-semibold text-gray-600 py-2">日</div><div class="text-center text-sm font-semibold text-gray-600 py-2">一</div><div class="text-center text-sm font-semibold text-gray-600 py-2">二</div><div class="text-center text-sm font-semibold text-gray-600 py-2">三</div><div class="text-center text-sm font-semibold text-gray-600 py-2">四</div><div class="text-center text-sm font-semibold text-gray-600 py-2">五</div><div class="text-center text-sm font-semibold text-gray-600 py-2">六</div></div><div id="expiryDateCalendar" class="grid grid-cols-7 gap-2"></div>
-                    <div class="mt-4 pt-3 border-t border-gray-200"><button type="button" id="expiryDateGoToToday" class="w-full px-3 py-2 text-sm text-indigo-600 hover:bg-indigo-50 rounded-md"><i class="fas fa-calendar-day mr-2"></i>回到今天</button></div>
+                    <div id="expiryDateMonthPicker" class="hidden mb-4"><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-900">{{misc.text_4_2228}}</span><button type="button" id="expiryDateBackToCalendar" class="text-gray-600 hover:text-gray-800"><i class="fas fa-times"></i></button></div><div class="grid grid-cols-3 gap-2"><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="0">{{misc.text_2_6610}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="1">{{misc.text_2_9252}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="2">{{misc.text_2_880}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="3">{{misc.text_2_7019}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="4">{{misc.text_2_4766}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="5">{{misc.text_2_38}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="6">{{misc.text_2_635}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="7">{{misc.text_2_4105}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="8">{{misc.text_2_2999}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="9">{{misc.text_3_1843}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="10">{{misc.text_3_9954}}</button><button type="button" class="month-option px-3 py-2 text-sm rounded hover:bg-gray-100" data-month="11">{{misc.text_3_5339}}</button></div></div>
+                    <div id="expiryDateYearPicker" class="hidden mb-4"><div class="flex justify-between items-center mb-3"><span class="font-medium text-gray-900">{{misc.text_4_6602}}</span><button type="button" id="expiryDateBackToCalendarFromYear" class="text-gray-600 hover:text-gray-800"><i class="fas fa-times"></i></button></div><div class="flex justify-between items-center mb-3"><button type="button" id="expiryDatePrevYearDecade" class="text-gray-600 hover:text-gray-800"><i class="fas fa-chevron-left"></i></button><span id="expiryDateYearRange" class="font-medium text-gray-900">2020-2029</span><button type="button" id="expiryDateNextYearDecade" class="text-gray-600 hover:text-gray-800"><i class="fas fa-chevron-right"></i></button></div><div id="expiryDateYearGrid" class="grid grid-cols-3 gap-2"></div></div>
+                    <div class="grid grid-cols-7 gap-2 mb-3"><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_2416}}</div><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_2003}}</div><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_2582}}</div><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_2096}}</div><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_8706}}</div><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_5775}}</div><div class="text-center text-sm font-semibold text-gray-600 py-2">{{misc.text_1_6873}}</div></div><div id="expiryDateCalendar" class="grid grid-cols-7 gap-2"></div>
+                    <div class="mt-4 pt-3 border-t border-gray-200"><button type="button" id="expiryDateGoToToday" class="w-full px-3 py-2 text-sm text-indigo-600 hover:bg-indigo-50 rounded-md"><i class="fas fa-calendar-day mr-2"></i>{{misc.text_4_576}}</button></div>
                 </div>
               </div>
               <div id="expiryDateLunar" class="lunar-display pl-1 mb-1"></div>
@@ -642,7 +642,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label for="reminderValue" class="block text-sm font-medium text-gray-700 mb-1">提醒提前量</label>
+              <label for="reminderValue" class="block text-sm font-medium text-gray-700 mb-1">{{subscriptions.text_5_3389}}</label>
               <div class="flex space-x-2">
                 <div class="relative flex-1">
                   <input type="number" id="reminderValue" min="0" value="7"
@@ -651,30 +651,30 @@
                 <div class="w-24 shrink-0">
                   <select id="reminderUnit"
                     class="w-full px-2 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-white">
-                    <option value="day" selected>天</option>
-                    <option value="hour">小时</option>
+                    <option value="day" selected>{{misc.text_1_2244}}</option>
+                    <option value="hour">{{misc.text_2_4656}}</option>
                   </select>
                 </div>
               </div>
                <div class="error-message text-red-500" data-for="reminderValue"></div>
                <p id="reminderHint" class="mt-2 text-xs text-gray-500 leading-tight">
-                 0 = 仅在到期时提醒; 选择"小时"需要将 Worker 定时任务调整为小时级执行
+                 0 = 仅在到期时提醒; 选择t("misc.text_2_4656")需要将 Worker 定时任务调整为小时级执行
                </p>
             </div>
 
             <div>
-               <label class="block text-sm font-medium text-gray-700 mb-3">选项设置</label>
+               <label class="block text-sm font-medium text-gray-700 mb-3">{{config.text_4_831}}</label>
                <div class="flex items-center space-x-6">
                   <label class="inline-flex items-center cursor-pointer select-none group">
                     <input type="checkbox" id="isActive" checked 
                       class="form-checkbox h-5 w-5 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500 transition duration-150 ease-in-out">
-                    <span class="ml-2 text-sm text-gray-700 font-medium group-hover:text-indigo-700">启用订阅</span>
+                    <span class="ml-2 text-sm text-gray-700 font-medium group-hover:text-indigo-700">{{subscriptions.text_4_9576}}</span>
                   </label>
                   
                   <label class="inline-flex items-center cursor-pointer select-none group">
                     <input type="checkbox" id="autoRenew" checked 
                       class="form-checkbox h-5 w-5 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500 transition duration-150 ease-in-out">
-                    <span class="ml-2 text-sm text-gray-700 font-medium group-hover:text-indigo-700">自动续订</span>
+                    <span class="ml-2 text-sm text-gray-700 font-medium group-hover:text-indigo-700">{{misc.text_4_2667}}</span>
                   </label>
                </div>
             </div>
@@ -682,7 +682,7 @@
 
         <div>
           <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">{{subscriptionForm.description}}</label>
-          <textarea id="notes" rows="2" placeholder="可添加相关备注信息..."
+          <textarea id="notes" rows="2" placeholder="{{misc.longText_81166}}"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
           <div class="error-message text-red-500"></div>
         </div>
@@ -692,11 +692,11 @@
         <div class="flex justify-end space-x-3 pt-4 border-t border-gray-200">
           <button type="button" id="cancelBtn" 
             class="px-5 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 bg-white transition-colors">
-            取消
+            {{common.cancel}}
           </button>
           <button type="submit" 
             class="btn-primary text-white px-6 py-2 rounded-md text-sm font-medium shadow-md hover:shadow-lg transform active:scale-95 transition-all">
-            <i class="fas fa-save mr-2"></i>保存
+            <i class="fas fa-save mr-2"></i>{{common.save}}
           </button>
         </div>
       </form>
@@ -732,16 +732,16 @@
       ],
 
       // 天干地支
-      gan: ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'],
-      zhi: ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'],
+      gan: [t('misc.text_1_2468'), t('misc.text_1_1899'), t('misc.text_1_9947'), t('misc.text_1_4870'), t('misc.text_1_2343'), t('misc.text_1_1974'), t('misc.text_1_6481'), t('misc.text_1_5851'), t('misc.text_1_2326'), t('misc.text_1_5639')],
+      zhi: [t('misc.text_1_5158'), t('misc.text_1_2130'), t('misc.text_1_6183'), t('misc.text_1_5673'), t('misc.text_1_59'), t('misc.text_1_9739'), t('misc.text_1_6611'), t('misc.text_1_2819'), t('misc.text_1_8817'), t('misc.text_1_2862'), t('misc.text_1_7298'), t('misc.text_1_9689')],
 
       // 农历月份
-      months: ['正', '二', '三', '四', '五', '六', '七', '八', '九', '十', '冬', '腊'],
+      months: [t('misc.text_1_2473'), t('misc.text_1_2582'), t('misc.text_1_2096'), t('misc.text_1_8706'), t('misc.text_1_5775'), t('misc.text_1_6873'), t('misc.text_1_9525'), t('misc.text_1_7190'), t('misc.text_1_234'), t('misc.text_1_4667'), t('misc.text_1_9152'), t('misc.text_1_7118')],
 
       // 农历日期
-      days: ['初一', '初二', '初三', '初四', '初五', '初六', '初七', '初八', '初九', '初十',
-             '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八', '十九', '二十',
-             '廿一', '廿二', '廿三', '廿四', '廿五', '廿六', '廿七', '廿八', '廿九', '三十'],
+      days: [t('misc.text_2_6976'), t('misc.text_2_2972'), t('misc.text_2_9317'), t('misc.text_2_8028'), t('misc.text_2_8716'), t('misc.text_2_1006'), t('misc.text_2_7070'), t('misc.text_2_373'), t('misc.text_2_8827'), t('misc.text_2_1353'),
+             t('misc.text_2_6434'), t('misc.text_2_2462'), t('misc.text_2_930'), t('misc.text_2_7293'), t('misc.text_2_4906'), t('misc.text_2_2396'), t('misc.text_2_2640'), t('misc.text_2_8872'), t('misc.text_2_3018'), t('misc.text_2_1444'),
+             t('misc.text_2_6776'), t('misc.text_2_1320'), t('misc.text_2_5516'), t('misc.text_2_465'), t('misc.text_2_5825'), t('misc.text_2_7600'), t('misc.text_2_88'), t('misc.text_2_5015'), t('misc.text_2_8921'), t('misc.text_2_4266')],
 
       // 获取农历年天数
       lunarYearDays: function(year) {
@@ -829,8 +829,8 @@
         // 生成农历字符串
         const ganIndex = (lunarYear - 4) % 10;
         const zhiIndex = (lunarYear - 4) % 12;
-        const yearStr = this.gan[ganIndex] + this.zhi[zhiIndex] + '年';
-        const monthStr = (isLeap ? '闰' : '') + this.months[lunarMonth - 1] + '月';
+        const yearStr = this.gan[ganIndex] + this.zhi[zhiIndex] + t('misc.text_1_8086');
+        const monthStr = (isLeap ? t('misc.text_1_4146') : '') + this.months[lunarMonth - 1] + t('misc.text_1_1759');
         const dayStr = this.days[lunarDay - 1];
 
         return {
@@ -1072,7 +1072,7 @@ const lunarBiz = {
 
       const name = document.getElementById('name').value.trim();
       if (!name) {
-        showFieldError('name', '请输入订阅名称');
+        showFieldError('name', t('subscriptions.longText_30049'));
         isValid = false;
       }
 
@@ -1106,7 +1106,7 @@ const lunarBiz = {
       const reminderValueField = document.getElementById('reminderValue');
       const reminderValue = reminderValueField.value;
       if (reminderValue === '' || Number(reminderValue) < 0) {
-        showFieldError('reminderValue', '提醒值不能为负数');
+        showFieldError('reminderValue', t('subscriptions.longText_25970'));
         isValid = false;
       }
 
@@ -1157,7 +1157,7 @@ const lunarBiz = {
 
       const defaultOption = document.createElement('option');
       defaultOption.value = '';
-      defaultOption.textContent = '全部分类';
+      defaultOption.textContent = t('subscriptions.allCategories');
       select.appendChild(defaultOption);
 
       sorted.forEach(cat => {
@@ -1196,7 +1196,7 @@ const lunarBiz = {
       return {
         unit,
         value,
-        displayText: unit === 'hour' ? '提前' + value + '小时' : '提前' + value + '天'
+        displayText: unit === 'hour' ? t('misc.text_2_1297') + value + t('misc.text_2_4656') : t('misc.text_2_1297') + value + t('misc.text_1_2244')
       };
     }
 
@@ -1320,41 +1320,8 @@ const lunarBiz = {
       tbody.innerHTML = '';
 
       if (filtered.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-gray-500">没有符合条件的订阅</td></tr>';
-        return;
-      }
-
-      filtered.sort((a, b) => new Date(a.expiryDate) - new Date(b.expiryDate));
-
-      const currentTime = new Date();
-      // 将 Intl 对象实例化移出循环，避免重复创建（极大提升性能）
-      const currentDtf = new Intl.DateTimeFormat('en-US', {
-          timeZone: globalTimezone,
-          hour12: false,
-          year: 'numeric', month: '2-digit', day: '2-digit'
-      });
-      // 获取当前时区的午夜时间戳（复用）
-      const currentParts = currentDtf.formatToParts(currentTime);
-      const getCurrent = type => Number(currentParts.find(x => x.type === type).value);
-      const currentDateInTimezone = Date.UTC(getCurrent('year'), getCurrent('month') - 1, getCurrent('day'), 0, 0, 0);
-
-      const displayDtf = new Intl.DateTimeFormat('zh-CN', {
-        timeZone: globalTimezone,
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-      });
-
-      // 使用 DocumentFragment 进行批量插入，减少页面重绘（移动端性能关键）
-      const fragment = document.createDocumentFragment();
-
-      filtered.forEach(subscription => {
-        const row = document.createElement('tr');
-        row.className = subscription.isActive === false ? 'hover:bg-gray-50 bg-gray-100' : 'hover:bg-gray-50';
-
-        const calendarTypeHtml = subscription.useLunar
-          ? '<div class="text-xs text-purple-600 mt-1">日历类型：农历</div>'
-          : '<div class="text-xs text-gray-600 mt-1">日历类型：公历</div>';
+        tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-gray-500">{{subscriptions.longText_9531}}</td></tr>{{misc.longText_73442}}<div class="text-xs text-purple-600 mt-1">{{misc.longText_34507}}</div>'
+          : '<div class="text-xs text-gray-600 mt-1">{{misc.longText_10902}}</div>';
 
         const expiryDate = new Date(subscription.expiryDate);
         
@@ -1374,63 +1341,24 @@ const lunarBiz = {
 
         let statusHtml = '';
         if (!subscription.isActive) {
-          statusHtml = '<span class="px-2 py-1 text-xs font-medium rounded-full text-white bg-gray-500"><i class="fas fa-pause-circle mr-1"></i>已停用</span>';
+          statusHtml = '<span class="px-2 py-1 text-xs font-medium rounded-full text-white bg-gray-500"><i class="fas fa-pause-circle mr-1"></i>{{misc.text_3_154}}</span>';
         } else if (daysDiff < 0) {
-          statusHtml = '<span class="px-2 py-1 text-xs font-medium rounded-full text-white bg-red-500"><i class="fas fa-exclamation-circle mr-1"></i>已过期</span>';
+          statusHtml = '<span class="px-2 py-1 text-xs font-medium rounded-full text-white bg-red-500"><i class="fas fa-exclamation-circle mr-1"></i>{{misc.text_3_3663}}</span>';
         } else if (isSoon) {
-          statusHtml = '<span class="px-2 py-1 text-xs font-medium rounded-full text-white bg-yellow-500"><i class="fas fa-exclamation-triangle mr-1"></i>即将到期</span>';
+          statusHtml = '<span class="px-2 py-1 text-xs font-medium rounded-full text-white bg-yellow-500"><i class="fas fa-exclamation-triangle mr-1"></i>{{subscriptions.expiringSoon}}</span>';
         } else {
-          statusHtml = '<span class="px-2 py-1 text-xs font-medium rounded-full text-white bg-green-500"><i class="fas fa-check-circle mr-1"></i>正常</span>';
+          statusHtml = '<span class="px-2 py-1 text-xs font-medium rounded-full text-white bg-green-500"><i class="fas fa-check-circle mr-1"></i>{{misc.text_2_5046}}</span>';
         }
 
         let periodText = '';
         if (subscription.periodValue && subscription.periodUnit) {
-          const unitMap = { day: '天', month: '月', year: '年' };
+          const unitMap = { day: t('misc.text_1_2244'), month: t('misc.text_1_1759'), year: t('misc.text_1_8086') };
           periodText = subscription.periodValue + ' ' + (unitMap[subscription.periodUnit] || subscription.periodUnit);
         }
 
         const autoRenewIcon = subscription.autoRenew !== false
-          ? '<i class="fas fa-sync-alt text-blue-500 mr-1" title="自动续订"></i>'
-          : '<i class="fas fa-ban text-gray-400 mr-1" title="不自动续订"></i>';
-
-        let lunarExpiryText = '';
-        let startLunarText = '';
-        
-        // 农历计算只在需要时执行，且简化逻辑
-        if (showLunar) {
-          const getLunarParts = (dateStr) => {
-            if (!dateStr) return null;
-            const datePart = dateStr.split('T')[0]; 
-            const parts = datePart.split('-');
-            if (parts.length !== 3) return null;
-            return {
-              y: parseInt(parts[0], 10),
-              m: parseInt(parts[1], 10),
-              d: parseInt(parts[2], 10)
-            };
-          };
-
-          const expiryParts = getLunarParts(subscription.expiryDate);
-          if (expiryParts) {
-             const lunarExpiry = lunarCalendar.solar2lunar(expiryParts.y, expiryParts.m, expiryParts.d);
-             lunarExpiryText = lunarExpiry ? lunarExpiry.fullStr : '';
-          }
-
-          if (subscription.startDate) {
-            const startParts = getLunarParts(subscription.startDate);
-            if (startParts) {
-               const lunarStart = lunarCalendar.solar2lunar(startParts.y, startParts.m, startParts.d);
-               startLunarText = lunarStart ? lunarStart.fullStr : '';
-            }
-          }
-        }
-
-        let notesHtml = '';
-        if (subscription.notes) {
-          const notes = subscription.notes;
-          if (notes.length > 50) {
-            const truncatedNotes = notes.substring(0, 50) + '...';
-            notesHtml = '<div class="notes-container">' +
+          ? '<i class="fas fa-sync-alt text-blue-500 mr-1" title="{{misc.text_4_2667}}"></i>'
+          : '<i class="fas fa-ban text-gray-400 mr-1" title="{{misc.text_5_8351}}"></i>{{cron.longText_63511}}<div class="notes-container">' +
               '<div class="notes-text text-xs text-gray-500" data-full-notes="' + notes.replace(/"/g, '&quot;') + '">' +
                 truncatedNotes +
               '</div>' +
@@ -1443,9 +1371,9 @@ const lunarBiz = {
 
         // 构造HTML字符串 (减少了函数调用)
         const nameHtml = createHoverText(subscription.name, 20, 'text-sm font-medium text-gray-900');
-        const typeHtml = createHoverText(subscription.customType || '其他', 15, 'text-sm text-gray-900');
+        const typeHtml = createHoverText(subscription.customType || t('misc.text_2_9739'), 15, 'text-sm text-gray-900');
         const periodHtml = periodText ? createHoverText('周期: ' + periodText, 20, 'text-xs text-gray-500 mt-1') : '';
-        const modeLabel = (subscription.subscriptionMode === 'reset') ? '到期重置' : '循环订阅';
+        const modeLabel = (subscription.subscriptionMode === 'reset') ? t('subscriptions.text_4_5431') : t('subscriptions.text_4_1168');
         const modeIconClass = (subscription.subscriptionMode === 'reset') ? 'fa-hourglass-end' : 'fa-sync';
         const modeColorClass = (subscription.subscriptionMode === 'reset') ? 'text-orange-500' : 'text-blue-500';
         const modeHtml = '<div class="text-xs ' + modeColorClass + ' mt-1"><i class="fas ' + modeIconClass + ' mr-1"></i>' + modeLabel + '</div>';
@@ -1465,16 +1393,16 @@ const lunarBiz = {
         if (diffMs < 0) {
           const absDays = Math.abs(daysDiff);
           if (absDays >= 1) {
-            daysLeftText = '已过期' + absDays + '天';
+            daysLeftText = t('misc.text_3_3663') + absDays + t('misc.text_1_2244');
           } else {
             const absHours = Math.ceil(Math.abs(diffHours));
-            daysLeftText = '已过期' + absHours + '小时';
+            daysLeftText = t('misc.text_3_3663') + absHours + t('misc.text_2_4656');
           }
         } else if (daysDiff >= 1) {
-          daysLeftText = '还剩' + daysDiff + '天';
+          daysLeftText = t('misc.text_2_1536') + daysDiff + t('misc.text_1_2244');
         } else {
           const hoursLeft = Math.max(0, Math.ceil(diffHours));
-          daysLeftText = hoursLeft > 0 ? '约 ' + hoursLeft + ' 小时后到期' : '即将到期';
+          daysLeftText = hoursLeft > 0 ? '约 ' + hoursLeft + ' 小时后到期' : t('subscriptions.expiringSoon');
         }
 
         const startDateText = subscription.startDate
@@ -1483,8 +1411,8 @@ const lunarBiz = {
         const startDateHtml = startDateText ? createHoverText(startDateText, 30, 'text-xs text-gray-500 mt-1') : '';
 
         const reminderExtra = reminder.value === 0
-          ? '<div class="text-xs text-gray-500 mt-1">仅到期时提醒</div>'
-          : (reminder.unit === 'hour' ? '<div class="text-xs text-gray-500 mt-1">小时级提醒</div>' : '');
+          ? '<div class="text-xs text-gray-500 mt-1">{{subscriptions.text_6_2298}}</div>'
+          : (reminder.unit === 'hour' ? '<div class="text-xs text-gray-500 mt-1">{{subscriptions.text_5_5077}}</div>' : '');
         const reminderHtml = '<div><i class="fas fa-bell mr-1"></i>' + reminder.displayText + '</div>' + reminderExtra;
 
         const currencySymbols = {
@@ -1498,14 +1426,14 @@ const lunarBiz = {
               '<span class="text-xs text-gray-500 font-bold">' + currencySymbol + '</span>' +
               '<span class="text-sm font-medium text-gray-900">' + subscription.amount.toFixed(2) + '</span>' +
             '</div>'
-          : '<span class="text-xs text-gray-400">未设置</span>';
+          : '<span class="text-xs text-gray-400">{{config.text_3_928}}</span>';
 
         row.innerHTML =
-          '<td data-label="名称" class="px-4 py-3"><div class="td-content-wrapper">' +
+          '<td data-label=t("subscriptions.name") class="px-4 py-3"><div class="td-content-wrapper">' +
             nameHtml +
             notesHtml +
           '</div></td>' +
-          '<td data-label="类型" class="px-4 py-3"><div class="td-content-wrapper space-y-1">' +
+          '<td data-label=t("misc.text_2_5806") class="px-4 py-3"><div class="td-content-wrapper space-y-1">' +
             '<div class="flex items-center gap-1">' +
               '<i class="fas fa-layer-group text-gray-400"></i>' +
               typeHtml +
@@ -1515,132 +1443,31 @@ const lunarBiz = {
             categoryHtml +
             calendarTypeHtml +
           '</div></td>' +
-          '<td data-label="到期" class="px-4 py-3"><div class="td-content-wrapper">' +
+          '<td data-label=t("subscriptions.text_2_9737") class="px-4 py-3"><div class="td-content-wrapper">' +
             '<div class="text-sm text-gray-900">' + expiryDateText + '</div>' +
             lunarHtml +
             '<div class="text-xs text-gray-500 mt-1">' + daysLeftText + '</div>' +
             startDateHtml +
           '</div></td>' +
-          '<td data-label="金额" class="px-4 py-3"><div class="td-content-wrapper">' +
+          '<td data-label=t("dashboard.amount") class="px-4 py-3"><div class="td-content-wrapper">' +
             amountHtml +
           '</div></td>' +
-          '<td data-label="提醒" class="px-4 py-3"><div class="td-content-wrapper">' +
+          '<td data-label=t("subscriptions.text_2_8761") class="px-4 py-3"><div class="td-content-wrapper">' +
             reminderHtml +
           '</div></td>' +
-          '<td data-label="状态" class="px-4 py-3"><div class="td-content-wrapper">' + statusHtml + '</div></td>' +
-          '<td data-label="操作" class="px-4 py-3">' +
+          '<td data-label=t("common.status") class="px-4 py-3"><div class="td-content-wrapper">' + statusHtml + '</div></td>' +
+          '<td data-label=t("common.actions") class="px-4 py-3">' +
             '<div class="action-buttons-wrapper">' +
               '<button class="edit btn-primary text-white px-2 py-1 rounded text-xs whitespace-nowrap" data-id="' + subscription.id + '"><i class="fas fa-edit mr-1"></i>{{subscriptions.edit}}</button>' +
-              '<button class="view-history bg-purple-500 hover:bg-purple-600 text-white px-2 py-1 rounded text-xs whitespace-nowrap" data-id="' + subscription.id + '" title="查看支付历史"><i class="fas fa-history mr-1"></i>历史</button>' +
-              '<button class="test-notify btn-info text-white px-2 py-1 rounded text-xs whitespace-nowrap" data-id="' + subscription.id + '"><i class="fas fa-paper-plane mr-1"></i>测试</button>' +
-              '<button class="renew-now btn-success text-white px-2 py-1 rounded text-xs whitespace-nowrap" data-id="' + subscription.id + '" title="立即续订一个周期"><i class="fas fa-sync-alt mr-1"></i>续订</button>' +
+              '<button class="view-history bg-purple-500 hover:bg-purple-600 text-white px-2 py-1 rounded text-xs whitespace-nowrap" data-id="' + subscription.id + '" title="{{subscriptions.text_6_7818}}"><i class="fas fa-history mr-1"></i>{{subscriptions.text_2_6786}}</button>' +
+              '<button class="test-notify btn-info text-white px-2 py-1 rounded text-xs whitespace-nowrap" data-id="' + subscription.id + '"><i class="fas fa-paper-plane mr-1"></i>{{config.text_2_3795}}</button>' +
+              '<button class="renew-now btn-success text-white px-2 py-1 rounded text-xs whitespace-nowrap" data-id="' + subscription.id + '" title="{{misc.longText_53096}}"><i class="fas fa-sync-alt mr-1"></i>{{misc.text_2_3630}}</button>' +
               '<button class="delete btn-danger text-white px-2 py-1 rounded text-xs whitespace-nowrap" data-id="' + subscription.id + '"><i class="fas fa-trash-alt mr-1"></i>{{subscriptions.delete}}</button>' +
               (subscription.isActive
-                ? '<button class="toggle-status btn-warning text-white px-2 py-1 rounded text-xs whitespace-nowrap" data-id="' + subscription.id + '" data-action="deactivate"><i class="fas fa-pause-circle mr-1"></i>停用</button>'
-                : '<button class="toggle-status btn-success text-white px-2 py-1 rounded text-xs whitespace-nowrap" data-id="' + subscription.id + '" data-action="activate"><i class="fas fa-play-circle mr-1"></i>启用</button>') +
+                ? '<button class="toggle-status btn-warning text-white px-2 py-1 rounded text-xs whitespace-nowrap" data-id="' + subscription.id + '" data-action="deactivate"><i class="fas fa-pause-circle mr-1"></i>{{misc.text_2_6121}}</button>'
+                : '<button class="toggle-status btn-success text-white px-2 py-1 rounded text-xs whitespace-nowrap" data-id="' + subscription.id + '" data-action="activate"><i class="fas fa-play-circle mr-1"></i>{{config.enableNotification}}</button>') +
             '</div>' +
-          '</td>';
-
-        fragment.appendChild(row);
-      });
-
-      tbody.appendChild(fragment);
-      document.querySelectorAll('.edit').forEach(button => {
-        button.addEventListener('click', editSubscription);
-      });
-
-      document.querySelectorAll('.delete').forEach(button => {
-        button.addEventListener('click', deleteSubscription);
-      });
-
-      document.querySelectorAll('.toggle-status').forEach(button => {
-        button.addEventListener('click', toggleSubscriptionStatus);
-      });
-
-      document.querySelectorAll('.test-notify').forEach(button => {
-        button.addEventListener('click', testSubscriptionNotification);
-      });
-
-      document.querySelectorAll('.renew-now').forEach(button => {
-        button.addEventListener('click', renewSubscriptionNow);
-      });
-
-      document.querySelectorAll('.view-history').forEach(button => {
-        button.addEventListener('click', viewPaymentHistory);
-      });
-
-      if (window.matchMedia('(hover: hover)').matches) {
-          attachHoverListeners();
-      }
-    }
-
-    const searchInput = document.getElementById('searchKeyword');
-    if (searchInput) {
-      searchInput.addEventListener('input', () => {
-        clearTimeout(searchDebounceTimer);
-        searchDebounceTimer = setTimeout(() => renderSubscriptionTable(), 200);
-      });
-    }
-
-    const categorySelect = document.getElementById('categoryFilter');
-    if (categorySelect) {
-      categorySelect.addEventListener('change', () => renderSubscriptionTable());
-    }
-
-    const modeSelect = document.getElementById('modeFilter');
-    if (modeSelect) {
-      modeSelect.addEventListener('change', () => renderSubscriptionTable());
-    }
-
-    // 获取所有订阅并按到期时间排序
-    async function loadSubscriptions(showLoading = true) {
-      try {
-        const listShowLunar = document.getElementById('listShowLunar');
-        const saved = localStorage.getItem('showLunar');
-        if (listShowLunar) {
-          if (saved !== null) {
-            listShowLunar.checked = saved === 'true';
-          } else {
-            listShowLunar.checked = true;
-          }
-        }
-
-        const tbody = document.getElementById('subscriptionsBody');
-        if (tbody && showLoading) {
-          tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4"><i class="fas fa-spinner fa-spin mr-2"></i>' + t('common.loading') + '</td></tr>';
-        }
-
-        const response = await fetch('/api/subscriptions');
-        const data = await response.json();
-
-        subscriptionsCache = Array.isArray(data) ? data : [];
-        populateCategoryFilter(subscriptionsCache);
-        renderSubscriptionTable();
-      } catch (error) {
-        console.error('加载订阅失败:', error);
-        const tbody = document.getElementById('subscriptionsBody');
-        if (tbody) {
-          tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-red-500"><i class="fas fa-exclamation-circle mr-2"></i>' + t('messages.loadFailed') + '</td></tr>';
-        }
-        showToast(t('messages.loadFailed'), 'error');
-      }
-    }
-    
-    async function testSubscriptionNotification(e) {
-        const button = e.target.closest('button');
-        if (!button) {
-          showToast('未找到测试按钮，请刷新页面后重试', 'error');
-          return;
-        }
-
-        const id = button.dataset.id;
-        if (!id) {
-          showToast('订阅 ID 缺失，无法发送测试通知', 'error');
-          return;
-        }
-
-        const originalContent = button.innerHTML;
-        button.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>发送中';
+          '</td>{{subscriptions.longText_56559}}<tr><td colspan="6" class="text-center py-4"><i class="fas fa-spinner fa-spin mr-2"></i>' + t('common.loading') + '</td></tr>{{subscriptions.longText_10799}}<tr><td colspan="6" class="text-center py-4 text-red-500"><i class="fas fa-exclamation-circle mr-2"></i>' + t('messages.loadFailed') + '</td></tr>{{config.longText_61068}}<i class="fas fa-spinner fa-spin mr-1"></i>发送中';
         button.disabled = true;
 
         try {
@@ -1649,11 +1476,11 @@ const lunarBiz = {
             try {
               result = await response.json();
             } catch (_) {
-              result = { success: false, message: '服务返回了无法解析的响应' };
+              result = { success: false, message: t('misc.longText_36350') };
             }
 
             if (response.ok && result.success) {
-                showToast(result.message || '测试通知发送成功', 'success');
+                showToast(result.message || t('config.longText_54591'), 'success');
             } else {
                 const errorMessage = (result && result.message) ? result.message : ('HTTP ' + response.status);
                 showToast('测试通知发送失败: ' + errorMessage, 'error', 4500);
@@ -1677,7 +1504,7 @@ const lunarBiz = {
             showRenewFormModal(subscription);
         } catch (error) {
             console.error('获取订阅信息失败:', error);
-            showToast('获取订阅信息时发生错误', 'error');
+            showToast(t('subscriptions.longText_74770'), 'error');
         }
     }
 
@@ -1685,7 +1512,7 @@ const lunarBiz = {
         const today = new Date().toISOString().split('T')[0];
         
         // 获取当前到期日的显示文本
-        let currentExpiryDisplay = '无';
+        let currentExpiryDisplay = t('misc.text_1_6716');
         if (subscription.expiryDate) {
             const datePart = subscription.expiryDate.split('T')[0];
             currentExpiryDisplay = datePart;
@@ -1700,7 +1527,7 @@ const lunarBiz = {
                         currentExpiryDisplay += ' (农历: ' + lunarObj.fullStr + ')';
                     }
                 } catch (e) {
-                    console.error('农历计算失败', e);
+                    console.error(t('messages.text_6_1609'), e);
                 }
             }
         }
@@ -1717,11 +1544,7 @@ const lunarBiz = {
         const currencyLabel = "(" + currency + " " + symbol + ")";
         
         const lunarBadge = subscription.useLunar ? 
-            '<span class="text-sm bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full border border-purple-200 shrink-0">农历周期</span>' : '';
-
-        // 构建 Modal HTML
-        const modalHtml = 
-            '<div id="renewFormModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50" onclick="closeRenewFormModal(event)">' +
+            '<span class="text-sm bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full border border-purple-200 shrink-0">{{misc.text_4_9695}}</span>{{misc.longText_86378}}<div id="renewFormModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50" onclick="closeRenewFormModal(event)">' +
             '    <div class="relative top-20 mx-auto p-5 border w-full max-w-md shadow-lg rounded-md bg-white" onclick="event.stopPropagation()">' +
             '        <div class="flex justify-between items-center pb-3 border-b">' +
             '            <h3 class="text-xl font-semibold text-gray-900">' +
@@ -1734,45 +1557,45 @@ const lunarBiz = {
             '' +
             '        <form id="renewForm" class="mt-4 space-y-4">' +
             '            <div>' +
-            '                <label class="block text-sm font-medium text-gray-700 mb-1">支付日期</label>' +
+            '                <label class="block text-sm font-medium text-gray-700 mb-1">{{subscriptions.text_4_7184}}</label>' +
             '                <input type="date" id="renewPaymentDate" value="' + today + '"' +
             '                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">' +
             '            </div>' +
             '' +
             '            <div>' +
-            '                <label class="block text-sm font-medium text-gray-700 mb-1">支付金额 ' + currencyLabel + '</label>' +
+            '                <label class="block text-sm font-medium text-gray-700 mb-1">{{subscriptions.longText_44680}}</label>' +
             '                <input type="number" id="renewAmount" value="' + defaultAmount + '" step="0.01" min="0"' +
             '                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">' +
             '            </div>' +
             '' +
             '            <div>' +
             '                <div class="flex justify-between items-center mb-1">' +
-            '                    <label class="block text-sm font-medium text-gray-700">续订周期数</label>' +
+            '                    <label class="block text-sm font-medium text-gray-700">{{misc.text_5_8207}}</label>' +
             '                    ' + lunarBadge + 
             '                </div>' +
             '                <div class="flex items-center space-x-2">' +
             '                    <input type="number" id="renewPeriodMultiplier" value="1" min="1" max="120"' +
             '                           class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"' +
             '                           oninput="updateNewExpiryPreview()">' +
-            '                    <span class="text-gray-600">个</span>' + 
+            '                    <span class="text-gray-600">{{misc.items}}</span>' + 
             '                </div>' +
-            '                <p class="mt-1 text-xs text-gray-500">一次性续订多个周期（如12个月）</p>' +
+            '                <p class="mt-1 text-xs text-gray-500">{{misc.longText_54626}}</p>' +
             '            </div>' +
             '' +
             '            <div class="bg-blue-50 rounded-lg p-4 mb-4">' +
             '                <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-3 sm:mb-2">' +
-            '                    <span class="text-gray-500 text-sm shrink-0">当前到期:</span>' +
+            '                    <span class="text-gray-500 text-sm shrink-0">{{subscriptions.text_5_2726}}</span>' +
             '                    <span class="font-medium text-gray-900 text-sm break-words">' + currentExpiryDisplay + '</span>' +
             '                </div>' +
             '                <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">' +
-            '                    <span class="text-gray-500 text-sm shrink-0">新到期日:</span>' +
-            '                    <span class="font-medium text-blue-600 text-sm break-words" id="newExpiryPreview">计算中...</span>' +
+            '                    <span class="text-gray-500 text-sm shrink-0">{{subscriptions.text_5_5775}}</span>' +
+            '                    <span class="font-medium text-blue-600 text-sm break-words" id="newExpiryPreview">{{misc.text_6_8720}}</span>' +
             '                </div>' +
             '            </div>' +
             '' +
             '            <div>' +
-            '                <label class="block text-sm font-medium text-gray-700 mb-1">备注 (可选)</label>' +
-            '                <input type="text" id="renewNote" placeholder="例如：年度优惠、价格调整"' +
+            '                <label class="block text-sm font-medium text-gray-700 mb-1">{{misc.longText_65672}}</label>' +
+            '                <input type="text" id="renewNote" placeholder="{{misc.longText_35585}}"' +
             '                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">' +
             '            </div>' +
             '' +
@@ -1844,11 +1667,11 @@ const lunarBiz = {
                                       
                     document.getElementById('newExpiryPreview').textContent = resultStr + ' (农历: ' + fullNextLunar.fullStr + ')';
                 } else {
-                    document.getElementById('newExpiryPreview').textContent = '日期计算错误';
+                    document.getElementById('newExpiryPreview').textContent = t('messages.text_6_7508');
                 }
             } catch (e) {
                 console.error(e);
-                document.getElementById('newExpiryPreview').textContent = '计算出错';
+                document.getElementById('newExpiryPreview').textContent = t('misc.text_4_6659');
             }
         } else {
             // 公历计算逻辑
@@ -1883,7 +1706,7 @@ const lunarBiz = {
             paymentDate: document.getElementById('renewPaymentDate').value,
             amount: parseFloat(document.getElementById('renewAmount').value) || 0,
             periodMultiplier: parseInt(document.getElementById('renewPeriodMultiplier').value) || 1,
-            note: document.getElementById('renewNote').value || '手动续订'
+            note: document.getElementById('renewNote').value || t('misc.text_4_8626')
         };
 
         const originalBtnContent = confirmBtn.innerHTML;
@@ -1899,17 +1722,17 @@ const lunarBiz = {
             const result = await response.json();
 
             if (result.success) {
-                showToast(result.message || '续订成功', 'success');
+                showToast(result.message || t('messages.text_4_6448'), 'success');
                 closeRenewFormModal();
                 await loadSubscriptions(false);
             } else {
-                showToast(result.message || '续订失败', 'error');
+                showToast(result.message || t('messages.text_4_7394'), 'error');
                 confirmBtn.innerHTML = originalBtnContent;
                 confirmBtn.disabled = false;
             }
         } catch (error) {
             console.error('续订失败:', error);
-            showToast('续订时发生错误', 'error');
+            showToast(t('messages.longText_52797'), 'error');
             confirmBtn.innerHTML = originalBtnContent;
             confirmBtn.disabled = false;
         }
@@ -1934,7 +1757,7 @@ const lunarBiz = {
             const result = await response.json();
 
             if (!result.success) {
-                showToast(result.message || '获取支付历史失败', 'error');
+                showToast(result.message || t('subscriptions.longText_31042'), 'error');
                 return;
             }
 
@@ -1946,7 +1769,7 @@ const lunarBiz = {
             showPaymentHistoryModal(subscription, payments);
         } catch (error) {
             console.error('获取支付历史失败:', error);
-            showToast('获取支付历史时发生错误', 'error');
+            showToast(t('subscriptions.longText_67568'), 'error');
         }
     }
 
@@ -1959,9 +1782,9 @@ const lunarBiz = {
             paymentsHtml = '<div class="text-center text-gray-500 py-8">' + t('dashboard.noData') + '</div>';
         } else {
             paymentsHtml = payments.reverse().map(payment => {
-                const typeLabel = payment.type === 'initial' ? '初始订阅' :
-                                payment.type === 'manual' ? '手动续订' :
-                                payment.type === 'auto' ? '自动续订' : '未知';
+                const typeLabel = payment.type === 'initial' ? t('subscriptions.text_4_7788') :
+                                payment.type === 'manual' ? t('misc.text_4_8626') :
+                                payment.type === 'auto' ? t('misc.text_4_2667') : t('misc.unknown');
                 const typeClass = payment.type === 'initial' ? 'bg-blue-100 text-blue-800' :
                                 payment.type === 'manual' ? 'bg-green-100 text-green-800' :
                                 payment.type === 'auto' ? 'bg-purple-100 text-purple-800' : 'bg-gray-100 text-gray-800';
@@ -1977,7 +1800,7 @@ const lunarBiz = {
                     const options = { year: 'numeric', month: 'short', day: 'numeric' };
                     const startStr = periodStart.toLocaleDateString('zh-CN', options);
                     const endStr = periodEnd.toLocaleDateString('zh-CN', options);
-                    periodHtml = '<div class="mt-1 ml-6 text-xs text-gray-500"><i class="fas fa-clock mr-1"></i>计费周期: ' + startStr + ' - ' + endStr + '</div>';
+                    periodHtml = '<div class="mt-1 ml-6 text-xs text-gray-500"><i class="fas fa-clock mr-1"></i>{{misc.longText_15882}}</div>';
                 }
 
                 const noteHtml = payment.note ? '<div class="mt-1 ml-6 text-sm text-gray-600">' + payment.note + '</div>' : '';
@@ -2001,12 +1824,12 @@ const lunarBiz = {
                                 <div class="flex gap-1">
                                     <button onclick="editPaymentRecord('${subscription.id}', '${payment.id}')"
                                             class="text-blue-600 hover:text-blue-800 px-2 py-1"
-                                            title="编辑">
+                                            title="{{common.edit}}">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                     <button onclick="deletePaymentRecord('${subscription.id}', '${payment.id}')"
                                             class="text-red-600 hover:text-red-800 px-2 py-1"
-                                            title="删除">
+                                            title="{{common.delete}}">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </div>
@@ -2032,11 +1855,11 @@ const lunarBiz = {
                     <div class="mt-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-4 mb-4">
                         <div class="grid grid-cols-2 gap-4">
                             <div class="text-center">
-                                <div class="text-sm text-gray-600">累计支出</div>
+                                <div class="text-sm text-gray-600">{{dashboard.text_4_2149}}</div>
                                 <div class="text-2xl font-bold text-purple-600">¥${totalAmount.toFixed(2)}</div>
                             </div>
                             <div class="text-center">
-                                <div class="text-sm text-gray-600">支付次数</div>
+                                <div class="text-sm text-gray-600">{{subscriptions.text_4_528}}</div>
                                 <div class="text-2xl font-bold text-blue-600">${paymentCount}</div>
                             </div>
                         </div>
@@ -2048,7 +1871,7 @@ const lunarBiz = {
 
                     <div class="mt-4 flex justify-end">
                         <button onclick="closePaymentHistoryModal()" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded">
-                            关闭
+                            {{common.close}}
                         </button>
                     </div>
                 </div>
@@ -2080,17 +1903,17 @@ const lunarBiz = {
             const result = await response.json();
 
             if (result.success) {
-                showToast(result.message || '支付记录已删除', 'success');
+                showToast(result.message || t('subscriptions.longText_32226'), 'success');
                 // 关闭当前模态框
                 closePaymentHistoryModal();
                 // 刷新订阅列表
                 await loadSubscriptions(false);
             } else {
-                showToast(result.message || '删除失败', 'error');
+                showToast(result.message || t('messages.text_4_4989'), 'error');
             }
         } catch (error) {
             console.error('删除支付记录失败:', error);
-            showToast('删除时发生错误', 'error');
+            showToast(t('messages.longText_42386'), 'error');
         }
     };
 
@@ -2106,14 +1929,14 @@ const lunarBiz = {
 
             const payment = payResult.payments.find(p => p.id === paymentId);
             if (!payment) {
-                showToast('支付记录不存在', 'error');
+                showToast(t('subscriptions.longText_37918'), 'error');
                 return;
             }
 
             showEditPaymentModal(subscription, payment);
         } catch (error) {
             console.error('获取支付记录失败:', error);
-            showToast('获取支付记录时发生错误', 'error');
+            showToast(t('subscriptions.longText_89324'), 'error');
         }
     };
 
@@ -2141,13 +1964,13 @@ const lunarBiz = {
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">支付日期</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">{{subscriptions.text_4_7184}}</label>
                             <input type="date" id="editPaymentDate" value="${formattedDate}"
                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">支付金额 (¥)</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">{{subscriptions.longText_38940}}</label>
                             <input type="number" id="editPaymentAmount" value="${payment.amount}" step="0.01" min="0"
                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                         </div>
@@ -2161,11 +1984,11 @@ const lunarBiz = {
                         <div class="flex justify-end space-x-3 pt-3">
                             <button type="button" onclick="closeEditPaymentModal()"
                                     class="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md">
-                                取消
+                                {{common.cancel}}
                             </button>
                             <button type="submit" id="confirmEditBtn"
                                     class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">
-                                <i class="fas fa-check mr-1"></i>保存
+                                <i class="fas fa-check mr-1"></i>{{common.save}}
                             </button>
                         </div>
                     </form>
@@ -2210,18 +2033,18 @@ const lunarBiz = {
             const result = await response.json();
 
             if (result.success) {
-                showToast(result.message || '支付记录已更新', 'success');
+                showToast(result.message || t('subscriptions.longText_61737'), 'success');
                 closeEditPaymentModal();
                 closePaymentHistoryModal();
                 await loadSubscriptions(false);
             } else {
-                showToast(result.message || '更新失败', 'error');
+                showToast(result.message || t('messages.text_4_8944'), 'error');
                 confirmBtn.innerHTML = originalBtnContent;
                 confirmBtn.disabled = false;
             }
         } catch (error) {
             console.error('更新支付记录失败:', error);
-            showToast('更新时发生错误', 'error');
+            showToast(t('messages.longText_10291'), 'error');
             confirmBtn.innerHTML = originalBtnContent;
             confirmBtn.disabled = false;
         }
@@ -2244,7 +2067,7 @@ const lunarBiz = {
       
       const button = e.target.tagName === 'BUTTON' ? e.target : e.target.parentElement;
       const originalContent = button.innerHTML;
-      button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>' + (isActivate ? '启用中...' : '停用中...');
+      button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>' + (isActivate ? t('common.activating') : t('common.deactivating'));
       button.disabled = true;
       
       try {
@@ -2255,24 +2078,24 @@ const lunarBiz = {
         });
         
         if (response.ok) {
-          showToast((isActivate ? '启用' : '停用') + '成功', 'success');
+          showToast((isActivate ? t('config.enableNotification') : t('misc.text_2_6121')) + t('common.success'), 'success');
           loadSubscriptions();
         } else {
           const error = await response.json();
-          showToast((isActivate ? '启用' : '停用') + '失败: ' + (error.message || '未知错误'), 'error');
+          showToast((isActivate ? t('config.enableNotification') : t('misc.text_2_6121')) + '失败: ' + (error.message || t('errors.unknownError')), 'error');
           button.innerHTML = originalContent;
           button.disabled = false;
         }
       } catch (error) {
-        console.error((isActivate ? '启用' : '停用') + '订阅失败:', error);
-        showToast((isActivate ? '启用' : '停用') + '失败，请稍后再试', 'error');
+        console.error((isActivate ? t('config.enableNotification') : t('misc.text_2_6121')) + '订阅失败:', error);
+        showToast((isActivate ? t('config.enableNotification') : t('misc.text_2_6121')) + '失败，请稍后再试', 'error');
         button.innerHTML = originalContent;
         button.disabled = false;
       }
     }
     
     document.getElementById('addSubscriptionBtn').addEventListener('click', () => {
-      document.getElementById('modalTitle').textContent = '添加新订阅';
+      document.getElementById('modalTitle').textContent = t('subscriptions.text_5_7600');
       document.getElementById('subscriptionModal').classList.remove('hidden');
       document.body.classList.add('overflow-hidden'); // 禁止背景滚动
 
@@ -2463,10 +2286,10 @@ const lunarBiz = {
         console.log('是否包含 hidden:', this.picker ? this.picker.classList.contains('hidden') : 'null');
         
         if (this.picker && this.picker.classList.contains('hidden')) {
-          console.log('显示日期选择器');
+          console.log(t('misc.longText_25457'));
           this.show();
         } else {
-          console.log('隐藏日期选择器');
+          console.log(t('misc.longText_81375'));
           this.hide();
         }
       }
@@ -2481,9 +2304,9 @@ const lunarBiz = {
           this.currentView = 'calendar';
           this.hideAllViews();
           this.render();
-          console.log('日期选择器已显示');
+          console.log(t('misc.longText_61174'));
         } else {
-          console.error('日期选择器元素不存在');
+          console.error(t('misc.longText_25385'));
         }
       }
       
@@ -2554,7 +2377,7 @@ const lunarBiz = {
         const parsed = new Date(year, month - 1, day);
         if (isNaN(parsed.getTime()) || parsed.getFullYear() !== year || parsed.getMonth() !== month - 1 || parsed.getDate() !== day) {
           if (!silent && typeof showToast === 'function') {
-            showToast('请输入有效的日期', 'warning');
+            showToast(t('misc.longText_41443'), 'warning');
           }
           return;
         }
@@ -2575,7 +2398,7 @@ const lunarBiz = {
         const month = this.currentDate.getMonth();
         
         // 更新月份年份显示
-        this.monthElement.textContent = (month + 1) + '月';
+        this.monthElement.textContent = (month + 1) + t('misc.text_1_1759');
         this.yearElement.textContent = year;
         
         // 清空日历
@@ -2618,7 +2441,7 @@ const lunarBiz = {
             if (lunar) {
               if (lunar.day === 1) {
                 // 初一，只显示月份
-                lunarText = lunar.isLeap ? '闰' + lunar.monthStr.replace('闰', '') : lunar.monthStr;
+                lunarText = lunar.isLeap ? t('misc.text_1_4146') + lunar.monthStr.replace(t('misc.text_1_4146'), '') : lunar.monthStr;
               } else {
                 // 不是初一，显示日
                 lunarText = lunar.dayStr;
@@ -2795,14 +2618,14 @@ const lunarBiz = {
     
     // === 自定义下拉菜单逻辑 ===
     const TYPE_OPTIONS = [
-      "流媒体", "视频平台", "音乐平台", "云服务", "软件订阅", 
-      "域名", "服务器", "会员服务", "学习平台", "健身/运动", 
-      "游戏", "新闻/杂志", "生日", "纪念日", "其他"
+      t("misc.text_3_8183"), t("misc.text_4_9059"), t("misc.text_4_5430"), t("misc.text_3_7186"), t("subscriptions.text_4_9538"), 
+      t("misc.text_2_5762"), t("misc.text_3_3142"), t("misc.text_4_2592"), t("misc.text_4_1030"), "健身/运动", 
+      t("misc.text_2_3748"), "新闻/杂志", t("misc.text_2_3964"), t("misc.text_3_7329"), t("misc.text_2_9739")
     ];
     
     const CATEGORY_OPTIONS = [
-      "个人", "家庭", "工作", "公司", "娱乐", "学习", 
-      "开发", "生产力", "社交", "健康", "财务"
+      t("misc.text_2_1640"), t("misc.text_2_8787"), t("misc.text_2_9100"), t("misc.text_2_631"), t("misc.text_2_4800"), t("misc.text_2_2924"), 
+      t("misc.text_2_6688"), t("misc.text_3_6558"), t("misc.text_2_961"), t("misc.text_2_7139"), t("misc.text_2_8649")
     ];
 
     function initCustomDropdown(inputId, listId, options) {
@@ -2811,216 +2634,7 @@ const lunarBiz = {
       
       if (!input || !list) return;
       list.innerHTML = options.map(opt => 
-        '<div class="dropdown-item">' + opt + '</div>'
-      ).join('');
-
-      if (!input.dataset.dropdownBound) {
-        input.dataset.dropdownBound = 'true';
-        const showList = (e) => {
-          e.stopPropagation();
-          document.querySelectorAll('.custom-dropdown-list').forEach(el => el.classList.remove('show'));
-          list.classList.add('show');
-        };
-
-        input.addEventListener('focus', showList);
-        input.addEventListener('click', showList); // 适配移动端点击
-
-        list.addEventListener('click', (e) => {
-          e.stopPropagation();
-          if (e.target.classList.contains('dropdown-item')) {
-            input.value = e.target.textContent;
-            input.dispatchEvent(new Event('input'));
-            list.classList.remove('show');
-          }
-        });
-      }
-    }
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.custom-dropdown-wrapper')) {
-        document.querySelectorAll('.custom-dropdown-list').forEach(el => el.classList.remove('show'));
-      }
-    });
-
-    function setupModalEventListeners() {     
-      const calculateExpiryBtn = document.getElementById('calculateExpiryBtn'); // 获取DOM元素
-      const useLunar = document.getElementById('useLunar');
-      const showLunar = document.getElementById('showLunar');
-      const startDate = document.getElementById('startDate');
-      const expiryDate = document.getElementById('expiryDate');
-      const cancelBtn = document.getElementById('cancelBtn');
-      
-      initCustomDropdown('customType', 'customTypeDropdown', TYPE_OPTIONS); // 初始化自定义下拉菜单
-      initCustomDropdown('category', 'categoryDropdown', CATEGORY_OPTIONS);    
-      
-      if (calculateExpiryBtn && !calculateExpiryBtn.dataset.bound) {
-        calculateExpiryBtn.dataset.bound = 'true';
-        calculateExpiryBtn.addEventListener('click', calculateExpiryDate); // 绑定事件
-      }
-      if (useLunar && !useLunar.dataset.bound) {
-        useLunar.dataset.bound = 'true';
-        useLunar.addEventListener('change', calculateExpiryDate);
-      }
-      if (showLunar && !showLunar.dataset.bound) {
-        showLunar.dataset.bound = 'true';
-        showLunar.addEventListener('change', toggleLunarDisplay);
-      }
-      if (startDate && !startDate.dataset.bound) {
-        startDate.dataset.bound = 'true';
-        startDate.addEventListener('change', () => updateLunarDisplay('startDate', 'startDateLunar'));
-      }
-      if (expiryDate && !expiryDate.dataset.bound) {
-        expiryDate.dataset.bound = 'true';
-        expiryDate.addEventListener('change', () => updateLunarDisplay('expiryDate', 'expiryDateLunar'));
-      }
-      if (cancelBtn && !cancelBtn.dataset.bound) {
-        cancelBtn.dataset.bound = 'true';
-        cancelBtn.addEventListener('click', () => {
-          document.getElementById('subscriptionModal').classList.add('hidden');
-          document.body.classList.remove('overflow-hidden'); // 恢复背景滚动
-        });
-      }
-
-      ['startDate', 'periodValue', 'periodUnit'].forEach(id => {
-        const element = document.getElementById(id);
-        if (element && !element.dataset.bound) {
-          element.dataset.bound = 'true';
-          element.addEventListener('change', calculateExpiryDate);
-        }
-      });
-      // 初始化日期选择器
-      try {
-        if (window.startDatePicker && typeof window.startDatePicker.destroy === 'function') window.startDatePicker.destroy();
-        if (window.expiryDatePicker && typeof window.expiryDatePicker.destroy === 'function') window.expiryDatePicker.destroy();
-        
-        window.startDatePicker = null;
-        window.expiryDatePicker = null;
-        
-        setTimeout(() => {
-          window.startDatePicker = new CustomDatePicker(
-            'startDate', 'startDatePicker', 'startDateCalendar', 
-            'startDateMonth', 'startDateYear', 'startDatePrevMonth', 'startDateNextMonth'
-          );
-          window.expiryDatePicker = new CustomDatePicker(
-            'expiryDate', 'expiryDatePicker', 'expiryDateCalendar', 
-            'expiryDateMonth', 'expiryDateYear', 'expiryDatePrevMonth', 'expiryDateNextMonth'
-          );
-        }, 50);
-      } catch (error) {
-        console.error('初始化日期选择器失败:', error);
-      }
-    }
-
-	// 在 script 标签顶部定义全局变量
-  let isEditingLoading = false;
-  const debugLog = (...args) => {
-    if (window.DEBUG_LOGS === true) console.log(...args);
-  };
-    // 3. 新增修改， calculateExpiryDate 函数，支持农历周期推算     
-	function calculateExpiryDate() {
-    if (isEditingLoading) return;
-
-	  const startDate = document.getElementById('startDate').value;
-	  const periodValue = parseInt(document.getElementById('periodValue').value);
-	  const periodUnit = document.getElementById('periodUnit').value;
-	  const useLunar = document.getElementById('useLunar').checked;
-
-	  if (!startDate || !periodValue || !periodUnit) {
-		return;
-	  }
-
-	  if (useLunar) {
-		// 农历推算
-		const start = new Date(startDate);
-		const lunar = lunarCalendar.solar2lunar(start.getFullYear(), start.getMonth() + 1, start.getDate());
-		let nextLunar = addLunarPeriod(lunar, periodValue, periodUnit);
-		const solar = lunar2solar(nextLunar);
-		
-		// 使用与公历相同的方式创建日期  
-		const expiry = new Date(startDate); // 从原始日期开始  
-		expiry.setFullYear(solar.year);  
-		expiry.setMonth(solar.month - 1);  
-		expiry.setDate(solar.day);  
-		document.getElementById('expiryDate').value = expiry.toISOString().split('T')[0];
-		debugLog('start:', start);
-		debugLog('nextLunar:', nextLunar);
-		debugLog('expiry:', expiry);
-		debugLog('expiryDate:', document.getElementById('expiryDate').value);
-		
-		debugLog('solar from lunar2solar:', solar);  
-		debugLog('solar.year:', solar.year, 'solar.month:', solar.month, 'solar.day:', solar.day);
-		debugLog('expiry.getTime():', expiry.getTime());  
-		debugLog('expiry.toString():', expiry.toString());
-		
-		
-	  } else {
-		// 公历推算
-		const start = new Date(startDate);
-		const expiry = new Date(start);
-		if (periodUnit === 'day') {
-		  expiry.setDate(start.getDate() + periodValue);
-		} else if (periodUnit === 'month') {
-		  expiry.setMonth(start.getMonth() + periodValue);
-		} else if (periodUnit === 'year') {
-		  expiry.setFullYear(start.getFullYear() + periodValue);
-		}
-		document.getElementById('expiryDate').value = expiry.toISOString().split('T')[0];
-		debugLog('start:', start);
-		debugLog('expiry:', expiry);
-		debugLog('expiryDate:', document.getElementById('expiryDate').value);
-	  }
-
-	  // 更新农历显示
-	  updateLunarDisplay('startDate', 'startDateLunar');
-	  updateLunarDisplay('expiryDate', 'expiryDateLunar');
-	}
-    
-    document.getElementById('closeModal').addEventListener('click', () => {
-      document.getElementById('subscriptionModal').classList.add('hidden');
-      document.body.classList.remove('overflow-hidden'); // 恢复页面滚动
-    });
-    
-    document.getElementById('subscriptionForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      if (!validateForm()) {
-        return;
-      }
-      
-      const id = document.getElementById('subscriptionId').value;
-      const reminderUnit = document.getElementById('reminderUnit').value;
-      const reminderValue = Number(document.getElementById('reminderValue').value) || 0;
-      const reminderHint = document.getElementById('reminderHint');
-      if (reminderHint) {
-        reminderHint.textContent = reminderUnit === 'hour'
-          ? '小时级提醒：需保证 Worker 每小时执行；0 表示仅到期时提醒'
-          : '0 = 仅在到期时提醒';
-      }
-
-      const subscription = {
-        name: document.getElementById('name').value.trim(),
-        customType: document.getElementById('customType').value.trim(),
-        category: document.getElementById('category').value.trim(),
-        subscriptionMode: document.getElementById('subscriptionMode').value, // 新增修改，表单提交时带上 subscriptionMode 字段
-        notes: document.getElementById('notes').value.trim() || '',
-        currency: document.getElementById('currency').value, // 新增修改，表单提交时带上 currency 字段
-        amount: document.getElementById('amount').value ? parseFloat(document.getElementById('amount').value) : null,
-        isActive: document.getElementById('isActive').checked,
-        autoRenew: document.getElementById('autoRenew').checked,
-        startDate: document.getElementById('startDate').value,
-        expiryDate: document.getElementById('expiryDate').value,
-        periodValue: Number(document.getElementById('periodValue').value),
-        periodUnit: document.getElementById('periodUnit').value,
-        reminderUnit: reminderUnit,
-        reminderValue: reminderValue,
-        reminderDays: reminderUnit === 'day' ? reminderValue : 0,
-        reminderHours: reminderUnit === 'hour' ? reminderValue : undefined,
-        useLunar: document.getElementById('useLunar').checked
-      };
-      
-      const submitButton = e.target.querySelector('button[type="submit"]');
-      const originalContent = submitButton.innerHTML;
-      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>' + (id ? '更新中...' : '保存中...');
+        '<div class="dropdown-item">' + opt + '</div>{{subscriptions.longText_8501}}<i class="fas fa-spinner fa-spin mr-2"></i>' + (id ? t('common.updating') : t('common.saving'));
       submitButton.disabled = true;
       
       try {
@@ -3041,10 +2655,10 @@ const lunarBiz = {
           document.body.classList.remove('overflow-hidden'); // 恢复背景滚动
           loadSubscriptions();
         } else {
-          showToast(t('messages.saveError') + ': ' + (result.message || '未知错误'), 'error');
+          showToast(t('messages.saveError') + ': ' + (result.message || t('errors.unknownError')), 'error');
         }
       } catch (error) {
-        console.error((id ? '更新' : '添加') + '订阅失败:', error);
+        console.error((id ? t('misc.text_2_6224') : t('common.add')) + '订阅失败:', error);
         showToast(t('messages.saveError'), 'error');
       } finally {
         submitButton.innerHTML = originalContent;
@@ -3061,7 +2675,7 @@ const lunarBiz = {
         const subscription = await response.json();
         
         if (subscription) {
-          document.getElementById('modalTitle').textContent = '编辑订阅';
+          document.getElementById('modalTitle').textContent = t('subscriptionForm.editTitle');
           document.getElementById('subscriptionId').value = subscription.id;
           document.getElementById('name').value = subscription.name;
           document.getElementById('subscriptionMode').value = subscription.subscriptionMode || 'cycle'; // 默认为 cycle
@@ -3101,7 +2715,7 @@ const lunarBiz = {
           if (reminderHint) {
             reminderHint.textContent = reminderUnit === 'hour'
               ? '小时级提醒：需保证 Worker 每小时执行；0 表示仅到期时提醒'
-              : '0 = 仅在到期时提醒';
+              : t('subscriptions.reminderOnExpiryOnly');
           }
           document.getElementById('useLunar').checked = !!subscription.useLunar;
           
@@ -3125,7 +2739,7 @@ const lunarBiz = {
         }
       } catch (error) {
         console.error('获取订阅信息失败:', error);
-        showToast('获取订阅信息失败', 'error');
+        showToast(t('subscriptions.longText_94516'), 'error');
         isEditingLoading = false; // 异常时也要释放锁
       }
     }
@@ -3152,7 +2766,7 @@ const lunarBiz = {
           loadSubscriptions();
         } else {
           const error = await response.json();
-          showToast(t('messages.operationFailed') + ': ' + (error.message || '未知错误'), 'error');
+          showToast(t('messages.operationFailed') + ': ' + (error.message || t('errors.unknownError')), 'error');
           button.innerHTML = originalContent;
           button.disabled = false;
         }
@@ -3216,24 +2830,24 @@ const lunarBiz = {
             const offset = Math.round((target - utc) / (1000 * 60 * 60));
             const offsetStr = offset >= 0 ? '+' + offset : offset;
             const timezoneNames = {
-              'UTC': '世界标准时间',
-              'Asia/Shanghai': '中国标准时间',
-              'Asia/Hong_Kong': '香港时间',
-              'Asia/Taipei': '台北时间',
-              'Asia/Singapore': '新加坡时间',
-              'Asia/Tokyo': '日本时间',
-              'Asia/Seoul': '韩国时间',
-              'America/New_York': '美国东部时间',
-              'America/Los_Angeles': '美国太平洋时间',
-              'America/Chicago': '美国中部时间',
-              'America/Denver': '美国山地时间',
-              'Europe/London': '英国时间',
-              'Europe/Paris': '巴黎时间',
-              'Europe/Berlin': '柏林时间',
-              'Europe/Moscow': '莫斯科时间',
-              'Australia/Sydney': '悉尼时间',
-              'Australia/Melbourne': '墨尔本时间',
-              'Pacific/Auckland': '奥克兰时间'
+              'UTC': t('misc.text_6_7756'),
+              'Asia/Shanghai': t('misc.text_6_8125'),
+              'Asia/Hong_Kong': t('misc.text_4_4149'),
+              'Asia/Taipei': t('misc.text_4_1799'),
+              'Asia/Singapore': t('misc.text_5_2463'),
+              'Asia/Tokyo': t('misc.text_4_7589'),
+              'Asia/Seoul': t('misc.text_4_3806'),
+              'America/New_York': t('misc.text_6_751'),
+              'America/Los_Angeles': t('misc.longText_81469'),
+              'America/Chicago': t('misc.text_6_8311'),
+              'America/Denver': t('misc.text_6_3990'),
+              'Europe/London': t('misc.text_4_325'),
+              'Europe/Paris': t('misc.text_4_3501'),
+              'Europe/Berlin': t('misc.text_4_907'),
+              'Europe/Moscow': t('misc.text_5_4275'),
+              'Australia/Sydney': t('misc.text_4_9972'),
+              'Australia/Melbourne': t('misc.text_5_6136'),
+              'Pacific/Auckland': t('misc.text_5_8264')
             };
             const timezoneName = timezoneNames[tz] || tz;
             return `${timezoneName} (UTC${offsetStr})`;
