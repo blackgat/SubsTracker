@@ -27,18 +27,18 @@ async function handleAdminRequest(request, env) {
     }
 
     if (pathname === '/admin/config') {
-      return new Response(configPage, {
+      return new Response(configPage(request), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
 
     if (pathname === '/admin/dashboard') {
-      return new Response(dashboardPage(), {
+      return new Response(dashboardPage(request), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
 
-    return new Response(adminPage, {
+    return new Response(adminPage(request), {
       headers: { 'Content-Type': 'text/html; charset=utf-8' }
     });
   } catch (error) {
@@ -50,8 +50,8 @@ async function handleAdminRequest(request, env) {
   }
 }
 
-function handleLoginPage() {
-  return new Response(loginPage, {
+function handleLoginPage(request) {
+  return new Response(loginPage(request), {
     headers: { 'Content-Type': 'text/html; charset=utf-8' }
   });
 }

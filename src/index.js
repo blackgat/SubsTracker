@@ -24,7 +24,7 @@ export default {
     } else if (url.pathname.startsWith('/admin')) {
       return handleAdminRequest(request, env, ctx);
     } else {
-      return handleLoginPage();
+      return handleLoginPage(request);
     }
   },
 
