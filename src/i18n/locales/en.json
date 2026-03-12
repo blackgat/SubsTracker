@@ -176,8 +176,10 @@
   },
   "messages": {
     "saveSuccess": "Saved successfully",
+    "saveError": "Save failed",
     "deleteSuccess": "Deleted successfully",
     "updateSuccess": "Updated successfully",
+    "loadFailed": "Load failed",
     "operationSuccess": "Operation successful",
     "operationFailed": "Operation failed"
   }

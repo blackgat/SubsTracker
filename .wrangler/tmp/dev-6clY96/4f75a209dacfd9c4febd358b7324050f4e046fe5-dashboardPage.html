@@ -280,7 +280,7 @@
       try {
         const r=await fetch('/api/dashboard/stats');
         const d=await r.json();
-        if(!d.success) throw new Error(d.message||t('messages.loadFailed'));
+        if(!d.success) throw new Error(d.message||'加载失败');
         
         const data=d.data;
 
@@ -431,7 +431,7 @@
         `).join('');
       } catch(e){
         console.error('加载仪表盘数据失败:',e);
-        document.getElementById('statsGrid').innerHTML='<div class="empty-state"><div class="empty-state-icon">❌</div><div class="empty-state-text">'+t('messages.loadFailed')+': '+e.message+'</div></div>';
+        document.getElementById('statsGrid').innerHTML='<div class="empty-state"><div class="empty-state-icon">❌</div><div class="empty-state-text">加载失败:'+e.message+'</div></div>';
       }
     }
     

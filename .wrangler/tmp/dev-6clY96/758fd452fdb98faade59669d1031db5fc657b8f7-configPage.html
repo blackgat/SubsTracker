@@ -711,7 +711,7 @@
         toggleNotificationConfigs(enabledNotifiers);
       } catch (error) {
         console.error('加载配置失败:', error);
-        showToast(t('messages.loadFailed'), 'error');
+        showToast('加载配置失败，请刷新页面重试', 'error');
       }
     }
     
@@ -895,7 +895,7 @@
         const result = await response.json();
 
         if (result.success) {
-          showToast(t('messages.saveSuccess'), 'success');
+          showToast('配置保存成功', 'success');
           if (window.updateAppTheme) {    // 保存成功后立即应用主题，无需刷新
             window.updateAppTheme(config.THEME_MODE);
           }
@@ -913,11 +913,11 @@
             window.location.reload();
           }
         } else {
-          showToast(t('messages.saveError') + ': ' + (result.message || '未知错误'), 'error');
+          showToast('配置保存失败: ' + (result.message || '未知错误'), 'error');
         }
       } catch (error) {
         console.error('保存配置失败:', error);
-        showToast(t('messages.saveError'), 'error');
+        showToast('保存配置失败，请稍后再试', 'error');
       } finally {
         submitButton.innerHTML = originalContent;
         submitButton.disabled = false;

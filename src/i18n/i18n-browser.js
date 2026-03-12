@@ -24,6 +24,8 @@ const i18nBrowserScript = `(function() {
       const browserLocale = this.getBrowserLocale();
       this.currentLocale = savedLocale || browserLocale || DEFAULT_LOCALE;
       document.documentElement.setAttribute('lang', this.currentLocale);
+      // 同步到 Cookie，讓伺服器端能讀取
+      this.syncLocaleToCookie(this.currentLocale);
       return this.currentLocale;
     }
 
@@ -53,8 +55,19 @@ const i18nBrowserScript = `(function() {
       this.currentLocale = locale;
       document.documentElement.setAttribute('lang', locale);
       try { localStorage.setItem(STORAGE_KEY, locale); } catch (e) {}
+      // 同步到 Cookie，讓伺服器端能讀取
+      this.syncLocaleToCookie(locale);
       window.dispatchEvent(new CustomEvent('localechange', { detail: { locale } }));
       return this.currentLocale;
+    }
+
+    syncLocaleToCookie(locale) {
+      try {
+        // 設定 Cookie，path=/ 全站可用，max-age=1年
+        document.cookie = 'app_locale=' + locale + '; path=/; max-age=31536000';
+      } catch (e) {
+        console.warn('Failed to sync locale to cookie:', e);
+      }
     }
 
     getLocale() { return this.currentLocale; }

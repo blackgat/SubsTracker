@@ -1607,7 +1607,7 @@ const lunarBiz = {
 
         const tbody = document.getElementById('subscriptionsBody');
         if (tbody && showLoading) {
-          tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4"><i class="fas fa-spinner fa-spin mr-2"></i>' + t('common.loading') + '</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4"><i class="fas fa-spinner fa-spin mr-2"></i>加载中...</td></tr>';
         }
 
         const response = await fetch('/api/subscriptions');
@@ -1620,9 +1620,9 @@ const lunarBiz = {
         console.error('加载订阅失败:', error);
         const tbody = document.getElementById('subscriptionsBody');
         if (tbody) {
-          tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-red-500"><i class="fas fa-exclamation-circle mr-2"></i>' + t('messages.loadFailed') + '</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-red-500"><i class="fas fa-exclamation-circle mr-2"></i>加载失败，请刷新页面重试</td></tr>';
         }
-        showToast(t('messages.loadFailed'), 'error');
+        showToast('加载订阅列表失败', 'error');
       }
     }
     
@@ -1956,7 +1956,7 @@ const lunarBiz = {
 
         let paymentsHtml = '';
         if (payments.length === 0) {
-            paymentsHtml = '<div class="text-center text-gray-500 py-8">' + t('dashboard.noData') + '</div>';
+            paymentsHtml = '<div class="text-center text-gray-500 py-8">暂无支付记录</div>';
         } else {
             paymentsHtml = payments.reverse().map(payment => {
                 const typeLabel = payment.type === 'initial' ? '初始订阅' :
@@ -3036,16 +3036,16 @@ const lunarBiz = {
         const result = await response.json();
         
         if (result.success) {
-          showToast(t('messages.saveSuccess'), 'success');
+          showToast((id ? '更新' : '添加') + '订阅成功', 'success');
           document.getElementById('subscriptionModal').classList.add('hidden');
           document.body.classList.remove('overflow-hidden'); // 恢复背景滚动
           loadSubscriptions();
         } else {
-          showToast(t('messages.saveError') + ': ' + (result.message || '未知错误'), 'error');
+          showToast((id ? '更新' : '添加') + '订阅失败: ' + (result.message || '未知错误'), 'error');
         }
       } catch (error) {
         console.error((id ? '更新' : '添加') + '订阅失败:', error);
-        showToast(t('messages.saveError'), 'error');
+        showToast((id ? '更新' : '添加') + '订阅失败，请稍后再试', 'error');
       } finally {
         submitButton.innerHTML = originalContent;
         submitButton.disabled = false;
@@ -3133,7 +3133,7 @@ const lunarBiz = {
     async function deleteSubscription(e) {
       const id = e.target.dataset.id || e.target.parentElement.dataset.id;
       
-      if (!confirm(t('subscriptions.deleteConfirm'))) {
+      if (!confirm('确定要删除这个订阅吗？此操作不可恢复。')) {
         return;
       }
       
@@ -3148,17 +3148,17 @@ const lunarBiz = {
         });
         
         if (response.ok) {
-          showToast(t('messages.deleteSuccess'), 'success');
+          showToast('删除成功', 'success');
           loadSubscriptions();
         } else {
           const error = await response.json();
-          showToast(t('messages.operationFailed') + ': ' + (error.message || '未知错误'), 'error');
+          showToast('删除失败: ' + (error.message || '未知错误'), 'error');
           button.innerHTML = originalContent;
           button.disabled = false;
         }
       } catch (error) {
         console.error('删除订阅失败:', error);
-        showToast(t('messages.operationFailed'), 'error');
+        showToast('删除失败，请稍后再试', 'error');
         button.innerHTML = originalContent;
         button.disabled = false;
       }

@@ -176,8 +176,10 @@
   },
   "messages": {
     "saveSuccess": "儲存成功",
+    "saveError": "儲存失敗",
     "deleteSuccess": "刪除成功",
     "updateSuccess": "更新成功",
+    "loadFailed": "載入失敗",
     "operationSuccess": "操作成功",
     "operationFailed": "操作失敗"
   }
